@@ -1,0 +1,18 @@
+name:       SurveyManager
+type:       Transition
+flow:       Survey
+foreach:        Survey|RecordAnswer,FlowAdmin|CreatePrime|Questionaire
+actions:
+    - name:     recordAnAnswer
+      method:   recordAnAnswer
+      foreach:  Survey|RecordAnswer
+      from:     active
+      to:       active
+    - name:     createQuestionaire
+      method:   createQuestionaire
+      parms:    (txn.Questionaire)
+      foreach:  FlowAdmin|CreatePrime|Questionaire
+      runAfter: createPrimeData
+      from:     active
+      to:       active
+

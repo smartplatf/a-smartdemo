@@ -1,0 +1,29 @@
+name:           Survey
+defaultEnable:  all
+primeData:
+    - org.smart.demo.survey.Questionaire
+    - org.smart.demo.survey.Survey
+data:
+    - org.smart.demo.survey.SurveyAnswer
+events:
+    - org.smart.demo.survey.RecordAnswer
+responses:
+    - org.smart.demo.survey.Recorded
+transitions:
+    - org.smart.demo.survey.SurveyManager
+keys:
+    - data: org.smart.demo.survey.Questionaire
+      key:  questionaireFor
+    - data: org.smart.demo.survey.Survey
+      key:  surveyId
+    - data: org.smart.demo.survey.SurveyAnswer
+      key:  answerId
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.survey.Questionaire
+        - org.smart.demo.survey.Survey
+        - org.smart.demo.survey.SurveyAnswer
+        - org.smart.demo.survey.RecordAnswer
+        - org.smart.demo.survey.Recorded
+        - org.smart.demo.survey.SurveyManager

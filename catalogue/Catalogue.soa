@@ -1,0 +1,11 @@
+name:   Catalogue
+defaultEnable: all
+primeData:
+    - org.smart.demo.catalogue.Product
+keys:
+    - data: org.smart.demo.catalogue.Product
+      key: skuId
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.catalogue.Product
