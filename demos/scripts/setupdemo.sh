@@ -23,12 +23,18 @@ declare -a deployfile=(
 $installpath'/org/smart/demo/message/message/1.0-SNAPSHOT/message-1.0-SNAPSHOT.jar'
 $installpath'/org/smart/demo/contact/contact/1.0-SNAPSHOT/contact-1.0-SNAPSHOT.jar'
 $installpath'/org/smart/demo/survey/survey/1.0-SNAPSHOT/survey-1.0-SNAPSHOT.jar'
+$installpath'/org/smart/demo/catalogue/catalogue/1.0-SNAPSHOT/catalogue-1.0-SNAPSHOT.jar'
+$installpath'/org/smart/demo/review/review/1.0-SNAPSHOT/review-1.0-SNAPSHOT.jar'
+$installpath'/org/smart/demo/cart/cart/1.0-SNAPSHOT/cart-1.0-SNAPSHOT.jar'
 )
 
 declare -a deploysoa=(
 'MessageFlow.soa'
 'ContactFlow.soa'
 'SurveyFlow.soa'
+'CatalogueFlow.soa'
+'ReviewDetailFlow.soa'
+'CartFlow.soa'
 )
 
 declare -a demotenants=(
@@ -36,6 +42,7 @@ declare -a demotenants=(
 'RoleDemo'
 'SurveyDemo1'
 'SurveyDemo2'
+'PPDemo'
 )
 
 declare -a defenable=(
@@ -43,6 +50,7 @@ declare -a defenable=(
 'ContactFlow'
 'SurveyFlow'
 'SurveyFlow'
+'CatalogueFlow'
 )
 
 declare -a defenablefeatures=(
@@ -50,6 +58,7 @@ declare -a defenablefeatures=(
 "all','admin','sales"
 'basic'
 "basic','advanced"
+'all'
 )
 
 ##############################
@@ -74,6 +83,7 @@ adminevt='CreateAdminProfile'
 chgpwd='ChangePassword'
 createprime='CreatePrime'
 surveyflow='SurveyFlow'
+catalogue='CatalogueFlow'
 
 ################################
 #CHECK ALL REQUIRED DATA IS PRESENT
@@ -130,6 +140,39 @@ do
 done
 echo "[Created Demo Tenants ...]"
 echo ""
+
+################################################
+# Plug and Play setup
+################################################
+pptenant=${demotenants[4]}
+echo  '[Enabling Review Flow for '$pptenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$pptenant"','enableFeatures':[ 'all' ],'enableFlow':'ReviewDetailFlow','links':[{'name':'objlink', 'flow':'CatalogueFlow', 'object':'Catalogue','attribute':'skuId'},{'name':'Reviewneedslink','object':'Catalogue'}]}" $sessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file ReviewDetailFlow for $pptenant error "$json
+echo '[Enabled Flow ReviewDetailFlow...]'
+echo  '[Enabling Cart Flow for '$pptenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$pptenant"','enableFeatures':[ 'all' ],'enableFlow':'CartFlow','links':[{'name':'itemlink', 'flow':'CatalogueFlow', 'object':'Catalogue','attribute':'skuId'}]}" $sessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file CartFlow for $pptenant error "$json
+echo '[Enabled Flow CartFlow ...]'
+
+echo "[Authenticating as $pptenant ...]"
+json=`postjson $pptenant $secflow $authevt "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'identity':'"$pptenant"admin', 'password':'"$pptenant"admin', 'type':'custom'}"`
+sessid=`jsonval "$json" $sessrch`
+[ ! -z "$sessid" ] || die "Cannot authenticate with server"
+echo "[Authenticated Got sessionid: "$sessid"]"
+echo ""
+
+echo "[Configuring catalogue items for $pptenant ...]"
+for i in {1..5}
+do
+json=`postjson $pptenant $catalogue $createprime "{'FlowAdmin':{'___smart_action___':'lookup','___smart_value___':'"$catalogue"'},'create':'Catalogue','data':{'skuId':'12"$i"','productName':'Product"$i"','cost':10,'available':10}}" $sessid`
+message=`jsonval "json" $depsrch`
+[ ! -z "$message" ] || die "Cannot create newsletter error "$json
+done
+echo "[Configured catalogue items for $pptenant ...]"
+echo ""
+
 
 ##################################################
 # Basic Usage setup
@@ -205,4 +248,6 @@ json=`postjson $tenant2 $surveyflow $createprime "{'FlowAdmin':{'___smart_action
 message=`jsonval "json" $depsrch`
 [ ! -z "$message" ] || die "Cannot create newsletter error "$json
 echo "[Configured questionaire for $tenant2 ...]"
+
+
 

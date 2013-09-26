@@ -1,0 +1,12 @@
+name:   CatalogueFlow
+defaultEnable: all
+primeData:
+    - org.smart.demo.catalogue.Catalogue
+keys:
+    - data: org.smart.demo.catalogue.Catalogue
+      key: skuId
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.catalogue.Catalogue
+

@@ -1,0 +1,35 @@
+name:   CartFlow
+defaultEnable: all
+primeData:
+    - org.smart.demo.cart.Cart
+    - org.smart.demo.cart.CartItem
+events:
+    - org.smart.demo.cart.AddToCart
+    - org.smart.demo.cart.RemoveFromCart
+    - org.smart.demo.cart.GetCartItems
+responses:
+    - org.smart.demo.cart.StatusMessage
+    - org.smart.demo.cart.CartDetails
+transitions:
+    - org.smart.demo.cart.CartManager
+keys:
+    - data: org.smart.demo.cart.CartItem
+      key: itemID
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.cart.Cart
+        - org.smart.demo.cart.CartItem
+        - org.smart.demo.cart.AddToCart
+        - org.smart.demo.cart.CartManager
+        - org.smart.demo.cart.StatusMessage
+        - org.smart.demo.cart.CartDetails
+        - org.smart.demo.cart.RemoveFromCart
+        - org.smart.demo.cart.GetCartItems
+links:
+    - from: CartItem.cartName
+      to: Cart.cartName
+needlinks:
+    - name: itemlink
+      from: CartItem.actualItem
+      via: AddToCart.cartItem

@@ -1,0 +1,24 @@
+name:   ReviewDetailFlow
+defaultEnable: all
+primeData:
+    - org.smart.demo.review.ReviewDetail
+events:
+    - org.smart.demo.review.WriteReview
+transitions:
+    - org.smart.demo.review.ReviewTransaction
+responses:
+    - org.smart.demo.review.AddedReview
+keys:
+    - data: org.smart.demo.review.ReviewDetail
+      key: reviewId
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.review.ReviewDetail
+        - org.smart.demo.review.WriteReview
+        - org.smart.demo.review.ReviewTransaction
+        - org.smart.demo.review.AddedReview
+needlinks:
+   - name: objlink
+     from: ReviewDetail.reviewObject
+     via: WriteReview.reviewObject

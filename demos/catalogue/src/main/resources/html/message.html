@@ -1,0 +1,65 @@
+<html>
+<body>
+    <span id='message' class='badge badge-warning'></span>
+<section id="TabElements" class="product-info">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class='active'><a href="#reviewcontainer" data-toggle="tab">Review</a></li>
+      <li><a href="#cartcontainer" data-toggle="tab">Cart</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade active in" id="reviewcontainer">
+    <p>Choose a product and provide a review:</p>
+    <button class='btn btn-general' id='showproducts'>Show Products</button>
+    <form class="signin-form" id='writereview'>
+      <table class="table table-striped">
+          <thead>
+              <th>Select</th>
+              <th>SKU</th>
+              <th>Product Name</th>
+              <th>Cost</th>
+          </thead>
+          <tbody id="catalogue">
+          </tbody>
+      </table>
+      <input class="input-block-level" type="text" placeholder="Enter a Review" id="reviewText" name="reviewText"/>
+      <select class="input-block-level" placeholder="Enter a Rating" id="rating" name="rating">
+          <option valu="1">1</option>
+          <option valu="2">2</option>
+          <option valu="3">3</option>
+          <option valu="4">4</option>
+          <option valu="5">5</option>
+      </select>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Add Review</button>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="cartcontainer">
+    <p>Choose a product to add to cart</p>
+    <button class='btn btn-general' id='showcartproducts'>Show Products</button>
+    <form class="signin-form" id='addcart'>
+      <table class="table table-striped">
+          <thead>
+              <th>Select</th>
+              <th>SKU</th>
+              <th>Product Name</th>
+              <th>Cost</th>
+          </thead>
+          <tbody id="cartcatalogue">
+          </tbody>
+      </table>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Add To Cart</button>
+      <span class="badge badge-error" id="cartname"></span>
+      <input type="hidden" id='cartName'/>
+      <table class="table table-striped">
+          <thead>
+              <th>SKU</th>
+          </thead>
+          <tbody id='cart'>
+          </tbody>
+      </table>
+    </form>
+    </div>
+    </div>
+</section>
+</body>
+</html>
