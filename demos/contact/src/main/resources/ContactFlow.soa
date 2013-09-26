@@ -1,0 +1,30 @@
+name:   ContactFlow
+defaultEnable: all
+primeData:
+    - org.smart.demo.contact.Contact
+    - org.smart.demo.contact.Enquiry
+events:
+    - org.smart.demo.contact.Enquire
+    - org.smart.demo.contact.CloseEnquiry
+transitions:
+    - org.smart.demo.contact.ContactManager
+responses:
+    - org.smart.demo.contact.ContactStatus
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.contact.Contact
+        - org.smart.demo.contact.Enquiry
+        - org.smart.demo.contact.Enquire
+        - org.smart.demo.contact.CloseEnquiry
+        - org.smart.demo.contact.ContactManager
+        - org.smart.demo.contact.ContactStatus
+    - name: admin
+      artefacts:
+        - org.smart.demo.contact.Contact
+        - org.smart.demo.contact.ContactManager
+    - name: sales
+      artefacts:
+        - org.smart.demo.contact.Enquiry
+        - org.smart.demo.contact.CloseEnquiry
+        - org.smart.demo.contact.ContactManager

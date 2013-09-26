@@ -1,0 +1,10 @@
+name:       MessageHandler
+type:       Transition
+flow:       MessageFlow
+foreach:        Message|DeActivateMessage
+callservices:
+    - name:     deactivateMessage
+      service:  AllFlows.TransitionServices.changeState
+      foreach:  Message|DeActivateMessage
+      from:     active
+      to:       inactive

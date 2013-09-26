@@ -1,0 +1,62 @@
+<html>
+<body>
+    <span id='message' class='badge badge-warning'></span>
+<section id="TabElements" class="product-info">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#logincontainer" data-toggle="tab">Login</a></li>
+      <li><a href="#admincontainer" data-toggle="tab">Admin</a></li>
+      <li><a href="#enquirecontainer" data-toggle="tab">Enquire</a></li>
+      <li><a href="#salescontainer" data-toggle="tab">Sales</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade active in" id="logincontainer">
+        <p>Login as <b>contactadmin/welcome</b> to be able to create a contact.</p>
+        <p>Login as <b>salesuser/welcome</b> to be able to close an enquiry.</p>
+      <select class='input-block-level' id='demosession'></select>
+    <form class="signin-form" id='login' method='post'>
+      <input class="input-block-level" type="text" placeholder="Enter User id" id="user" name="user" required='required'/>
+      <input class="input-block-level" type='password' placeholder="Enter the password" id='password' name='password' required='required'/>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Login</button>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="enquirecontainer">
+    <form class="signin-form" id='enquire'>
+      <input class="input-block-level" type="text" placeholder="Enter Contact Name to contact" id="cname" name="cname" required='required'/>
+      <input class="input-block-level" type="text" placeholder="Enter Your Name" id="name" name="name" required='required'/>
+      <input class="input-block-level" type="text" placeholder="Enter Your Phone" id="phone" name="phone"/>
+      <input class="input-block-level" type="email" placeholder="Enter Your Email" id="email" name="email" required='required'/>
+      <input class="input-block-level" type="text" placeholder="Enter Subject" id="subject" name="subject"/>
+      <input class="input-block-level" type="text" placeholder="Enter a message" id="cmessage" name="cmessage" required='required'/>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Send Enquiry</button>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="admincontainer">
+    <form class="signin-form" id='createcontact'>
+      <input class="input-block-level" type="text" placeholder="Enter Contact Name" id="contactName" name="contactName" required='required'/>
+      <input class="input-block-level" type="text" placeholder="Enter Street" id="street" name="street"/>
+      <input class="input-block-level" type="text" placeholder="Enter City" id="city" name="city"/>
+      <input class="input-block-level" type="text" placeholder="Enter State" id="state" name="state" required='required'/>
+      <input class="input-block-level" type="text" placeholder="Enter Pincode" id="pincode" name="pincode"/>
+      <input class="input-block-level" type="email" placeholder="Enter Email" id="email" name="email" required='required'/>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Create Contact</button>
+    </form>
+    </div>
+    <div class="tab-pane fade" id="salescontainer">
+        <button class='btn btn-medium' id='showenquiries'>Show Enquiries</button>
+        <table class='table table-striped'>
+            <thead>
+                <th>From</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>subject</th>
+                <th>message</th>
+                <th>action</th>
+            </thead>
+            <tbody id="enquiries">
+            </tbody>
+        </table>
+    </div>
+</section>
+</body>
+</html>

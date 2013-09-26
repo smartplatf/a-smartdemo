@@ -1,0 +1,57 @@
+<html>
+<body>
+    <span id='message' class='badge badge-warning'></span>
+<section id="TabElements" class="product-info">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class='active'><a href="#tenant1container" data-toggle="tab">SurveyDemo1</a></li>
+      <li><a href="#tenant2container" data-toggle="tab">SurveyDemo2</a></li>
+    </ul>
+    <input type='hidden' id='usetenant'/>
+    <input type='hidden' id='SurveyDemo1sessid'/>
+    <input type='hidden' id='SurveyDemo2sessid'/>
+    <div id="myTabContent" class="tab-content">
+
+    <div class="tab-pane fade active in" id="tenant1container">
+        <p>This survey is conduct for tenant SurveyDemo1. This tenant does not have the advanced feature enabled and hence no email is required.</p>
+        <button class='btn btn-general' id='tenant1get'>Get Questionaire</button>
+        <button class='btn btn-general' id='tenant1results'>Survey Summary</button>
+        <form class="signin-form" id='tenant1survey' method='post'>
+            <input type='hidden' id='SurveyDemo1questions'/>
+            <table class='table table-striped'>
+                <thead>
+                    <th>Question</th>
+                    <th>Yes</th>
+                    <th>No</th>
+                    <th>Maybe</th>
+                </thead>
+                <tbody id="SurveyDemo1answers">
+                </tbody>
+            </table>
+          <button class="btn btn-medium btn-general input-block-level" type="submit">Submit Answers</button>
+        </form>
+        <canvas id='SurveyDemo1results'/>
+    </div>
+    <div class="tab-pane fade" id="tenant2container">
+      <p>This survey is conduct for tenant SurveyDemo1. This tenant has the advanced feature enabled and hence email is required. If not given this will give an error.</p>
+      <button class='btn btn-general' id='tenant2get'>Get Questionaire</button>
+      <button class='btn btn-general' id='tenant2results'>Survey Summary</button>
+      <form class="signin-form" id='tenant2survey'>
+            <input type='hidden' id='SurveyDemo2questions'/>
+        <table class='table table-striped'>
+            <thead>
+                <th>Question</th>
+                <th>Yes</th>
+                <th>No</th>
+                <th>Maybe</th>
+            </thead>
+            <tbody id="SurveyDemo2answers">
+            </tbody>
+        </table>
+      <input class="input-block-level" type="email" placeholder="Enter Your Email" id="email" name="email"/>
+      <button class="btn btn-medium btn-general input-block-level" type="submit">Submit Answers</button>
+        <canvas id='SurveyDemo2results'/>
+    </form>
+    </div>
+</section>
+</body>
+</html>

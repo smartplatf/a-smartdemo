@@ -1,0 +1,19 @@
+name:   Message
+type:   PrimeData
+flow:   MessageFlow
+attributes:
+    - attribute:    message
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   read
+      parm:     ListAllEvent
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

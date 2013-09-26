@@ -1,0 +1,15 @@
+name:   MessageFlow
+defaultEnable: all
+primeData:
+    - org.smart.demo.message.Message
+events:
+    - org.smart.demo.message.DeActivateMessage
+transitions:
+    - org.smart.demo.message.MessageHandler
+features:
+    - name: all
+      artefacts:
+        - org.smart.demo.message.Message
+        - org.smart.demo.message.MessageHandler
+        - org.smart.demo.message.DeActivateMessage
+

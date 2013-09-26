@@ -1,0 +1,12 @@
+name:       SurveyValidator
+type:       Transition
+flow:       SurveyFlow
+foreach:        Survey|RecordAnswer
+actions:
+    - name:     validateSurveyResponse
+      method:   validateSurveyResponse
+      foreach:  Survey|RecordAnswer
+      runBefore: recordAnAnswer
+      from:     active
+      to:       active
+
