@@ -1,0 +1,17 @@
+name:       ContactManager
+type:       Transition
+flow:       ContactFlow
+foreach:        Contact|Enquire,Enquiry|CloseEnquiry
+actions:
+    - name:     enquiry
+      method:   enquiry
+      foreach:  Contact|Enquire
+      from:     active
+      to:       active
+callservices:
+    - name:     close
+      service:  AllFlows.TransitionServices.changeState
+      foreach:  Enquiry|CloseEnquiry
+      from:     active
+      to:       inactive
+

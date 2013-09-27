@@ -1,0 +1,70 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>DeActivateMessage</td>
+<td>MessageFlow</td>
+<td>/TenantName/MessageFlow/DeActivateMessage</td>
+<td>Message "The message to be deactivated"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event that showcases the custom event functionality in SMART. This event just changes the state of a Message from active to inactive so that the message is not displayed any more. The inactive state is created as an end state. Once a data goes into an end state none of the events can be raised on it.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "Message": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Message to deactivate"
+  }
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "success": "Done Updated state",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done Updated state</td>
+<td>Indicates that the state has been changed</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

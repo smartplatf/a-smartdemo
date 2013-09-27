@@ -1,0 +1,102 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>NewTenant</td>
+<td>AdminSmartFlow</td>
+<td>/SmartOwner/AdminSmartFlow/NewTenant</td>
+<td>TenantAdmin "SmartOwner"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SmartOwner is the default tenant created in every SMART platform and is used to administer SMART. The NewTenant event is used to create a new tenant in SMART. This sets up an isolated runtime environment for the tenant. By default the tenant comes with the standard flows - Security, AllFlows, AdminSmartFlow and Monitor. When a tenant is created, a custom flow can be enabled for the tenant. If not, the EnableFlow event can be called to enable a flow. The first flow enabled cannot be mashed up with anything and has to be an independent flow.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "TenantAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "SmartOwner"
+  },
+  "tenant": "Unique name for tenant",
+  "domain": "The domain name",
+  "enableFlow": "Name of Flow to enable",
+  "clientOf": "The third party name"
+  "enableFeatures": [
+    "feature of the flow"
+  ],
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td>Tenant Name</td>
+<td>The unique name for this tenant. This is used in all the URIs for posting events.</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>domain name</td>
+<td>This is an optional field. This specifies the domain from which this tenant can be accessed. The Origin for the request is checked against this for validity.</td>
+</tr>
+<tr>
+<td>clientOf</td>
+<td>name</td>
+<td>If the tenant is maintained by a third party, this is the third party name. A third party can create more than one tenant for use.</td>
+</tr>
+<tr>
+<td>enableFlow</td>
+<td>flow name</td>
+<td>The name of a deployed flow that has to be by default enabled for this tenant.</td>
+</tr>
+<tr>
+<td>features</td>
+<td>List of feature names</td>
+<td>A list of features in the flow that has to be enabled for this tenant by default.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "success": "Done tenant name",
+      "___smart_responseid___": "response id for this response"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done message</td>
+<td>Indicates that the tenant has been created.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

@@ -1,0 +1,90 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>CreateUser</td>
+<td>Security</td>
+<td>/TenantName/Security/CreateUser</td>
+<td>FlowAdmin "Security"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides out of the box security that allows users to be associated to roles and access granted based on roles. SMART hence provides a user functionality that allows to create a single user and associate multiple identities to the same user. The user can login using any of the identities. The CreateUser event creates a new user in SMART for the given tenant. Call the AddIdentity event to create an identity for the user. Unless an identity is added no permissions can be used.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Security"
+  },
+  "id": "user name",
+  "name": "Actual name of user",
+  "roles": [
+    list of roles to grant to user
+  ]
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>A user name</td>
+<td>An unique identifier identifying this user.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the user</td>
+<td>SMART only requires a user name to create a user and no other information.</td>
+</tr>
+<tr>
+<td>roles</td>
+<td>list of roles</td>
+<td>A list of role names of the roles to be associated with this user. More than one role can be associated with the same user. The AddRoleToUser event can also be called to add roles to a user once the user is created.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "message": "Created a user for user name : actual name",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>Create user</td>
+<td>Indicates that the user has been created or an user with the id is already existing.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

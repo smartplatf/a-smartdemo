@@ -1,0 +1,39 @@
+#########################################################
+# This is part of the SMART demo for Basic Demo.
+#
+# This file describes the data class in the MessageFlow
+# If this file is not present, then SMART uses defaults
+# for all the values. By default the data will be named
+# as the Simple Class Name, the states will be active and
+# inactive and it will be protected by role access. The
+# key in this case has to be specified in the flow soa file
+#
+# In this file, we have specified the key as message. We want 
+# the data to be accessible without authentication for read
+# when access using the ListAllEvent. Hence we specify an
+# unauthenticated security for the data object for ListAllEvent.
+# Any other event with no authentication will give a "Access
+# denied" error.
+#
+# All other events are governed by the role defined. See the Role
+# Demo for more information on this.
+######################################################
+name:   Message
+type:   PrimeData
+flow:   MessageFlow
+attributes:
+    - attribute:    message
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   read
+      parm:     ListAllEvent
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

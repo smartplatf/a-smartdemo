@@ -1,0 +1,84 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>ListAllEvent</td>
+<td>AllFlows (Called on any flow)</td>
+<td>/TenantName/Data's Flow/ListAllEvent</td>
+<td>FlowAdmin "Data's flow name"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides a set of events that can be used by all flows. These events are typically raised on the flow admin and provides helper services. The ListAllEvent is one such event that can be called on any flow to retrieve all the data for a given object. The event takes in a size parameter that limits the number of data objects retrieved.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Data's Flow name"
+  },
+  "group": "Object Name",
+  "size": size to retrieve
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>group</td>
+<td>Object Name</td>
+<td>The name of the object to be retrived. The object has to be present in the flow for which this event is posted.</td>
+</tr>
+<tr>
+<td>size</td>
+<td>Number</td>
+<td>The number of objects to be retrieved. This does not guarantee any order and just picks up the first size data objects and returns them. If the total number of objects present is less than size, all objects are returned.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "resultSet": [
+        list of data objects
+      ],
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>resultSet</td>
+<td>List of objects</td>
+<td>This returns a list of objects in the format of the data. The number of elements will be size or less than size.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

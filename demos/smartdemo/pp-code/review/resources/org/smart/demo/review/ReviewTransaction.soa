@@ -1,0 +1,10 @@
+name:       ReviewTransaction
+type:       Transition
+flow:       ReviewDetailFlow
+foreach:        Reviewneedslink|WriteReview
+actions:
+    - name:     writeReview
+      method:   writeReview
+      foreach:  Reviewneedslink|WriteReview
+      from:     active
+      to:       active

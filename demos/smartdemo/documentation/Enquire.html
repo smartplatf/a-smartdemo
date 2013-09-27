@@ -1,0 +1,99 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>Enquire</td>
+<td>ContactFlow</td>
+<td>/TenantName/ContactFlow/Enquire</td>
+<td>Contact "Name of contact to send enquiry"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event that is used to showcase executing an event without a authentication. An enquiry can be done by any user without a valid user name/password in the system. This event has been setup to run for an unauthenticated access.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "subject": "A subject to send in the enquiry",
+  "message": "A message to include in the enquiry",
+  "name": "Name of the person",
+  "email": "email of the person",
+  "phone": "phone of the person",
+  "Contact": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "contact to send enquiry to"
+  }
+}</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>subject</td>
+<td>subject</td>
+<td>A subject for the enquiry.</td>
+</tr>
+<tr>
+<td>message</td>
+<td>A message</td>
+<td>A message for the enquiry.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>name</td>
+<td>Name of the enquirer.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>email</td>
+<td>Email of the enquirer.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>phone</td>
+<td>Phone of the enquirer.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of request",
+  "responses": [
+    {
+      "message": "An email has been sent.",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>An email has been sent.</td>
+<td>While the demo does not send an email, this can be integrated to the out of box service provided by SMART to send out emails to the contact.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

@@ -1,0 +1,70 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>CloseEnquiry</td>
+<td>ContactFlow</td>
+<td>/TenantName/ContactFlow/CloseEnquiry</td>
+<td>Enquiry "id of the enquiry to be closed"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event to showcase access of an event only based on role. The event can only be raised by a user with the sales role. The event just changes the state of the enquiry from active to inactive, so that the enquiry does not appear again.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "Enquiry": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "id of the enquiry to close"
+  }
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of request",
+  "responses": [
+    {
+      "success": "Done Updated state",
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done updated state</td>
+<td>Indicates that the enquiry has been closed.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

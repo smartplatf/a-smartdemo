@@ -1,0 +1,19 @@
+name:   Contact
+type:   PrimeData
+flow:   ContactFlow
+attributes:
+    - attribute:    contactName
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   read
+      parm:     Enquire
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

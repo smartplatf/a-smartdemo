@@ -1,0 +1,82 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>DeployEvent</td>
+<td>AdminSmartFlow</td>
+<td>/SmartOwner/AdminSmartFlow/DeployEvent</td>
+<td>TenantAdmin "SmartOwner"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SmartOwner is the default tenant created in every SMART platform and is used to administer SMART. The DeployEvent is used to deploy jars into SMART for usage by different tenants. Deploying a jar does not enable it for any tenant.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "TenantAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "SmartOwner"
+  },
+  "deployJar": "file path on local filesystem",
+  "flowsoa": "The soa file name"
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>deployJar</td>
+<td>Jar file</td>
+<td>The file name of the jar to be deployed. This file needs to be present in the local file system of the server.</td>
+</tr>
+<tr>
+<td>flowsoa</td>
+<td>Flow soa file name</td>
+<td>This is the file that is present within the jar, describing the jar.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "success": "Done File Name",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done message</td>
+<td>Indicates that this jar has been deployed</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

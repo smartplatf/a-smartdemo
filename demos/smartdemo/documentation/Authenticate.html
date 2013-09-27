@@ -1,0 +1,88 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>Authenticate</td>
+<td>Security</td>
+<td>/TenantName/Security/Authenticate</td>
+<td>FlowAdmin "Security"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>The Authenticate Event is used to authenticate a user before accessing the role based features of any flow. Once authenticated, this event returns a session id which is expected in all subsequent requests. The role played by the user is then determined by the session id to grant access.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Security"
+  },
+  "identity": "User Name",
+  "password": "Password",
+  "type": "custom"
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td>User name</td>
+<td>The user's identity that is used to authenticate the user</td>
+</tr>
+<tr>
+<td>password</td>
+<td>password</td>
+<td>The password for the identity to authenticate. Currently this is not encrypted, when https is enabled, this will be encrypted.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>custom</td>
+<td>This indicates the type of authentication to do. Currently only custom is supported. This will change as and when facebook, gmail etc integration is done.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "sessionId": "Session id allocated for this session",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>sessionId</td>
+<td>session id</td>
+<td>The session id allocated for the authenticated session</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

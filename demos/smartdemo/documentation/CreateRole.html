@@ -1,0 +1,84 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>CreateRole</td>
+<td>Security</td>
+<td>/TenantName/Security/CreateRole</td>
+<td>FlowAdmin "Security"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides out of box role definitions that can be created and assigned to users. This defines the access that a user can have to the different features in the flows. By default all objects created in SMART has a role based access defined unless overridden. This event is an out of box event provided by SMART to create roles. Roles are defined as a collection of access granted to different features in a flow.f</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Security"
+  },
+  "roleName": "Role Name",
+  "permits": {
+    List of uri : permits.
+  }
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>roleName</td>
+<td>name</td>
+<td>A name to be associated with the role being created. This has to be unique for the tenant.</td>
+</tr>
+<tr>
+<td>permits</td>
+<td>map of uri and permits for uri</td>
+<td>This defines the permissions allowed in this role. A uri is a path indicating the flowname and the feature name and is of the format /flowname/featurename. The permit can be read, write or execute.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "message": "Created a role for role name",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>Created message</td>
+<td>A message indicating that a role has been created or a role already existsff</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

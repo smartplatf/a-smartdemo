@@ -1,0 +1,82 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>CreatePrime</td>
+<td>AllFlows (Any Flow)</td>
+<td>/TenantName/Data's Flow/CreatePrime</td>
+<td>FlowAdmin "Flow name of the data created"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides a set of events that can be used by all flows. These events are typically raised on the flow admin and provides helper services. The CreatePrime is one such service that creates Prime Data of any flow. This calls the standard transitions that are written for the event. Customizations can be added to this by providing a transition for the FlowAdmin and CreatePrime combination with the name of the object to be created.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Flow to which object belongs"
+  }
+  "create": "Object name to be created",
+  "data": "{ Data to create object }",
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>create</td>
+<td>Object Name</td>
+<td>Specify the name of the data object to be created here. This should belong to the flow on which this event is called.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>The data to be used to create object</td>
+<td>Provide a map of the data to be used to create the object. This is a name-value pair, where the name matches the member variable name in the object and the value type matches the type of the member variable.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "success": "Done Object for: Object name created.",
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done message</td>
+<td>Indicates that the object has been created.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

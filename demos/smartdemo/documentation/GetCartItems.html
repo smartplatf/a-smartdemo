@@ -1,0 +1,84 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>GetCartItems</td>
+<td>CartFlow</td>
+<td>/TenantName/CartFlow/GetCartItems</td>
+<td>The Cart for which to retrieve items</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event for the Plug and Play demo. This event retrieves the related cart items for the Cart object. The implementation for this event shows how to pass as a parameter the list of linked objects for the cart object.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "Cart": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "name of the cart"
+  }
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "cartName": "Name of the cart",
+      "totalItems": number of items in cart,
+      "items": [
+        List of items in cart
+      ],
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>cartName</td>
+<td>Cart Name</td>
+<td>The name of the cart for which data is retrieved</td>
+</tr>
+<tr>
+<td>totalItems</td>
+<td>Number</td>
+<td>Number of items in cart</td>
+</tr>
+<tr>
+<td>items</td>
+<td>List of cartItems</td>
+<td>This returns a list of CartItem objects that belong to this cart. This only returns the key of the related object. Call the LookupEvent to get the actual object.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

@@ -1,0 +1,83 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>WriteReview</td>
+<td>ReviewDetailFlow</td>
+<td>/TenantName/ReviewDetail/WriteReview</td>
+<td>Object mashed up with. In out demo this is catalogue.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>The WriteReview is a demo event and part of the Plug and Play feature. This demonstrates how we can mash up an event to be raised on an object which is not a part of this flow and not tightly coupled. The object on which the event should be raised is specified when the flow is enabled for a tenant.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "Mashed object name": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "mashed object key value"
+  }
+  "reviewText": "The review text",
+  "rating": "A rating for the product",
+  "reviewObject": "The skuId or the mashed up object's link",
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>reviewText</td>
+<td>The text entered by user</td>
+<td>This is the text that is stored as a review for the object.</td>
+</tr>
+<tr>
+<td>rating</td>
+<td>number rating</td>
+<td>A rating provided by the user for the object.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "added": "Added Review",
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>added</td>
+<td>Added Review</td>
+<td>This is just a simple response to indicate success.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

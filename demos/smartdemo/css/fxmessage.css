@@ -1,0 +1,40 @@
+.fxmessageboxhover { 
+background-position: 50% 50%;  
+background-color: #111; 
+background-repeat: no-repeat; 
+color: #ffffff; 
+cursor: pointer; 
+-webkit-transition: all .7s ease-in-out; 
+-moz-transition: all .7s ease-in-out; 
+-o-transition: all .7s ease-in-out; 
+-ms-transition: all .7s ease-in-out; 
+transition: all .7s ease-in-out; 
+}  
+
+.fxmsgboxwhite { 
+padding: 25px; 
+margin-bottom:20px; 
+width: 250px; 
+height: 100px;
+background:url(http://localhost/fixchgnew/images/light.png) repeat #FFFFFF; 
+border:1px solid #E4E4E4; 
+-webkit-box-shadow: 0 8px 6px -6px #ddd; 
+-moz-box-shadow: 0 8px 6px -6px #ddd; 
+box-shadow: 0 8px 6px -6px #ddd; 
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30); 
+-ms-filter: 'progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)'; 
+zoom: 1; 
+} 
+
+.fxmsgpopup { 
+z-index: 999999999999999; 
+position: fixed; 
+top: -1295px; 
+right: -1000px; 
+-webkit-transition: all 1s ease-in-out; 
+-moz-transition: all 1s ease-in-out; 
+-o-transition: all 1s ease-in-out; 
+-ms-transition: all 1s ease-in-out; 
+transition: all 1s ease-in-out; 
+overflow: auto; 
+}

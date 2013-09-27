@@ -1,0 +1,109 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>ListDeployments</td>
+<td>AdminSmartFlow</td>
+<td>/SmartOwner/AdminSmartFlow/ListDeployments,
+/TenantName/AdminSmartFlow/ListDeployments</td>
+<td>TenantAdmin "SmartOwner"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>The ListDeployments gives back the list of deployments based on the request. This event can be raised on either the SmartOwner tenant or any tenant. When raised on the SmartOwner tenant, this returns the list of deployed flows. When raised on a tenant, this lists enabled deployment types. If no flow is provided, this lists the enabled flows for the tenant. If a flow is provided, the dtype indicates the deployment type to retrieve. When it is event, it retrieves the events of the flow, when it is data it retrieves the data for the flow.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "AdminSmartFlow"
+  }
+  "flow":"Flow name",
+  "dtype":"event/data/links"
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>flow</td>
+<td>flow name</td>
+<td>This is an optional value. When provided this retrieves the deployments for the flow.</td>
+</tr>
+<tr>
+<td>dtype</td>
+<td>deployment type</td>
+<td>This is an optional value. When provided it retrieves the deployments of the given type for the given flow.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "enabledFlows": [
+        List of enabled flows
+      ],
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "dType": "type of deployment"
+      "deployments": [
+        List of deployments
+      ],
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>enabledFlows</td>
+<td>Flows enabled for tenant</td>
+<td>If the request is for enabled flows, then this is returned.</td>
+</tr>
+<tr>
+<td>dType</td>
+<td>deployment type</td>
+<td>The type of deployment returned.</td>
+</tr>
+<tr>
+<td>deployments</td>
+<td>List of Deployments</td>
+<td>If the request is for a deployment then the list is returned in this.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

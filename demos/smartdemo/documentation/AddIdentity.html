@@ -1,0 +1,89 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>AddIdentity</td>
+<td>Security</td>
+<td>/TenantName/Security/AddIdentityf</td>
+<td>SmartUser "The user for which identity has to be added"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides out of the box security that allows users to be associated to roles and access granted based on roles. SMART hence provides a user functionality that allows to create a single user and associate multiple identities to the same user. The user can login using any of the identities. The AddIdentity event creates an identity for the user. Unless an identity is added no permissions can be used.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "SmartUser": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "User for whom to add identity"
+  },
+  "identity": "identity to add",
+  "credentialKey": "password",
+  "type": "custom"
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>identity</td>
+<td>identity to add</td>
+<td>The identity with which this user can login. This can be linked to other authentication systems. Currently only custom supported.f</td>
+</tr>
+<tr>
+<td>credentialKey</td>
+<td>password</td>
+<td>This is a password to be assigned for this identity.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>custom</td>
+<td>This indicates the type of identity. Currently only SMART validated users are supported. This will be extended in the future to support other open id authentications.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id of the request",
+  "responses": [
+    {
+      "message": "Added identity",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>Added identity</td>
+<td>A message indicating that the identity has been added or an error indicating that the identity already exists.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+f

@@ -1,0 +1,104 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>EnableFlow</td>
+<td>AdminSmartFlow</td>
+<td>/SmartOwner/AdminSmartFlow/EnableFlow</td>
+<td>TenantAdmin "SmartOwner"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SmartOwner is the default tenant created in every SMART platform and is used to administer SMART. The EnableFlow is used to enable deployed flows for an existing tenant. This can be used to mashup one flow with another flow. During mashup it is assumed that the mashed flow is already enabled for this tenant. If not enabled, the system will give an error when executing the event.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "TenantAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "SmartOwner"
+  },
+  "tenant": "Name of the tenant for which to enable",
+  "enableFlow": "Flow to enable",
+  "enableFeatures": [
+    "Feature name to enable"
+  ],
+  "links": [
+     provide list of links here.
+    {
+      "name": "name of the link",
+      "flow": "flow to link to",
+      "object": "object to link to",
+      "attribute": "attribute to link to"
+    }
+  ]
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>tenant</td>
+<td>Tenant Name</td>
+<td>The tenant name for which to enable this flow.</td>
+</tr>
+<tr>
+<td>enableFlow</td>
+<td>Name of the flow to enable</td>
+<td>Name of the flow that has to be enabled for this tenant.</td>
+</tr>
+<tr>
+<td>enableFeatures</td>
+<td>List of feature names</td>
+<td>The list of feature names that has to be enabled for this tenant and is present in this flow.</td>
+</tr>
+<tr>
+<td>links</td>
+<td>List of links</td>
+<td>If the flow enabled has needlinks then this is provided. Links can be to fill needlinks that related one object in this flow to an object in another flow, or a transition service that is called in this flow from another flow, or a data on which an event in this flow is raised. In the first case, the attribute is a member variable of the object. For the second, the attribute is a function name in a transition. In the third case attribute is not used.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "success": "Done flow name",
+      "___smart_responseid___": "response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>success</td>
+<td>Done message</td>
+<td>Indicates that this flow has been enabled for the tenant</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

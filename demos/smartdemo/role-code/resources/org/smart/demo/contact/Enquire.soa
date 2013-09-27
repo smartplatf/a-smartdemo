@@ -1,0 +1,9 @@
+name:       Enquire
+type:       Event
+flow:       ContactFlow
+security:
+    - name:     readaccess
+      type:     unauthenticated
+      access:   execute
+      parm:     Enquire
+

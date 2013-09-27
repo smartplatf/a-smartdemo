@@ -1,0 +1,87 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>RecordAnswer</td>
+<td>Survey</td>
+<td>/TenantName/Survey/RecordAnswer</td>
+<td>Survey Object for which answer is recorded</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event that shows how the same event can be customized to act differently for different tenants. In this demo, the RecordAnswer expects a email for SurveyDemo2 but not for SurveyDemo1 tenant.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "answers": [
+    List of answers to be sent, in the order in which the questionaire was created.
+    {
+      "answer": "aye" or "nay" or "maybe"
+    }
+  ],
+  "email" : "email of the user"
+  "Survey": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Questionaire key"
+  }
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>answers</td>
+<td>a list of answers</td>
+<td>The answers are recorded in the same order in which the questionaire was created.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email of user</td>
+<td>If a question indicates that email is required, then email has to be provided. Only if the advanced feature is enabled will this be enforced.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "done": "Done",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>done</td>
+<td>Done message</td>
+<td>Indicates that this answer has been recorded</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

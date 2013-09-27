@@ -1,0 +1,13 @@
+name:   Cart
+type:   PrimeData
+flow:   CartFlow
+attributes:
+    - attribute:    cartName
+      type:         key
+states:
+    - name:         empty
+      startState:   true
+    - name:         added
+      startState:   false
+    - name:         inactive
+      endState:     true

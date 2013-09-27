@@ -1,0 +1,76 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>AddToCart</td>
+<td>CartFlow</td>
+<td>/TenantName/CartFlow/AddToCart</td>
+<td>Cart to which to add item</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>This is a demo event that is part of the Plug and Play Demo. This event is in CartFlow and adds an item that is mashed up with this flow to the cart. The key passed for the item is looked up for validity before it is linked. If not present, this will throw and exception.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "Cart": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Cart Name"
+  }
+  "cartItem": "Key of the item that is linked",
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>cartItem</td>
+<td>Key of item to be added</td>
+<td>This should be a valid key and should be saved for the given type mashed up with the CartFlow.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "message": "Added item to cart: cart Name",
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>Added item</td>
+<td>Indicates that the item has been added.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>

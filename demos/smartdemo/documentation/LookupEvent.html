@@ -1,0 +1,84 @@
+<blockquote>
+<table class="table wishlist table-bordered">
+<thead>
+<th><h6>Event Name</h6></th>
+<th><h6>Flow</h6></th>
+<th><h6>URI Format</h6></th>
+<th><h6>Raised on Object</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>LookupEvent</td>
+<td>AllFlows(Data Object Flow)</td>
+<td>/TenantName/Data's Flow/LookupEvent</td>
+<td>FlowAdming "Data's Flow name"</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Summary</h6>
+<blockquote>SMART provides a set of events that can be used by all flows. These events are typically raised on the flow admin and provides helper services. The LookupEvent is one such event that returns a single data object for the given key.</blockquote>
+<h6>Request Format</h6>
+<pre>
+{
+  "FlowAdmin": {
+    "___smart_action___": "lookup",
+    "___smart_value___": "Object flow"
+  }
+  "group": "Object to lookup",
+  "key": "Key of the object to lookup",
+}
+</pre>
+<h6>Request Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>group</td>
+<td>Object name</td>
+<td>The name of the object to lookup.</td>
+</tr>
+<tr>
+<td>key</td>
+<td>key value</td>
+<td>The value of the key of the object to lookup.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h6>Response Format</h6>
+<pre>
+{
+  "event": "Event id for the request",
+  "responses": [
+    {
+      "result": [
+         List of looked up objects
+      ],
+      "___smart_responseid___": "Response id"
+    }
+  ]
+}
+</pre>
+<h6>Response Description</h6>
+<blockquote>
+<table class="table wishlist table-bordered table-striped">
+<thead>
+<th class='span2'><h6>Name</h6></th>
+<th class='span2'><h6>Value</h6></th>
+<th class='span6'><h6>Description</h6></th>
+</thead>
+<tbody>
+<tr>
+<td>result</td>
+<td>Data looked up</td>
+<td>The data that corresponds to the given key. The data is in the format of the Object that is looked up. The member variables of the object is the name and the value is the value of the variable.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
