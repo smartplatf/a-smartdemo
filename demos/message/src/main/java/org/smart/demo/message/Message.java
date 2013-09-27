@@ -1,39 +1,38 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.message.Message
- * Revision:            1.0
- * Date:                09-09-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * A message to be displayed to the world
+ * This is part of the SMART demo for Basic Demo. 
+ *
+ * This class is a data class that stores data into the database.
+ * In SMART data is just a Serializable class. It converts directly
+ * into a single table in the database. The members of the class
+ * translate to columns in the database. When the members are
+ * sub objects, the column names are dereferenced by the member name.
+ *
+ * The tables are not created until the first data is created in SMART.
+ * In SMART all data is stored against a tenant. For the demo, this 
+ * class is used by the BasicDemo tenant and deployed as a part of
+ * MessageFlow jar. 
+ *
+ * In the demo when an object of this class is created, the following is
+ * the data structure:
+ *
+ * Table created: __BasicDemo-MessageFlow__Message
+ * Columns: column=d:Message.message  - This will contain the data in the current object
+ *                 d:Message.___smart_currentState___ - Added by SMART and stores the current state
+ *                 d:Message.___smart_flow___ - Added by SMART and stores the flow this data belongs to
+ *                 d:Message.___smart_legend___ - Added by SMART and has the createdOn, lastModifiedOn values
+ *
+ * By default SMART adds a synthetic key to this object and reference is stored
+ * against this key. The message member variable is created as a key for this object
+ * A reference to the SMART generated key will be stored against the message member
+ * variable.
  *
  * ************************************************************
  * */
@@ -42,12 +41,19 @@ package org.smart.demo.message;
 
 public class Message implements java.io.Serializable
 {
+    //A member variable to store the Hello World message and display back
     private String message;
 
     public Message()
     {
     }
 
+    /**
+     * An access for the message member variable. 
+     * Since this object is created using the standard CreatePrime event, a setter is not required 
+     * for this field and is setup using reflect when the event is posted. If the data is created
+     * using other methods, please do add the appropriate setter methods or logic.
+     * */
     public String getMessage() { return message; }
 }
 

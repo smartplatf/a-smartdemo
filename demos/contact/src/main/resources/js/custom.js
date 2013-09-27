@@ -1,6 +1,6 @@
 function init()
 {
-    $("body").append("<script src='role-code/js/Contact.js' type='text/javascript'></script>");
+    $("body").append("<script src='role-code/resources/js/Contact.js' type='text/javascript'></script>");
 }
 
 function showStatus(msg)

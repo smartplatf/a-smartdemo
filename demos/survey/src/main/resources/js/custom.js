@@ -1,12 +1,14 @@
 function init()
 {
-    $("body").append("<script src='survey-code/js/Survey.js' type='text/javascript'></script>");
+    $("body").append("<script src='survey-code/resources/js/Survey.js' type='text/javascript'></script>");
     $("body").append("<script src='js/chart.js' type='text/javascript'></script>");
-    setDemoSessionId('SurveyDemo1');
-    setDemoSessionId('SurveyDemo2');
+    setDemoSessionId('SurveyDemo1', false);
+    setDemoSessionId('SurveyDemo2', true);
+
+
 }
 
-function setDemoSessionId(tenant) {
+function setDemoSessionId(tenant, flow) {
     $.ajax({
        url: "checklogin.php",
        type: "POST",
@@ -14,7 +16,30 @@ function setDemoSessionId(tenant) {
     })
     .done(function(resp) {
         $('#' + tenant + 'sessid').val(resp);
-        //getEnabledFlows(tenant);
+        if (flow)
+        {
+            var ul = $("<ul/>", {
+                'class' : 'tree bullet_arrow2'
+            });
+
+            var li = $("<li/>");
+            var ali = $("<a/>", {
+                'href' : '#',
+                'text':tenant
+            });
+            li.append(ali);
+            var tul = $("<ul/>", {
+                'class' : 'tree bullet_arrow2',
+                'id':'enabledflows2'
+            });
+
+            li.append(tul);
+            ul.append(li);
+            var div = $('#tenants');
+            div.append(ul);
+
+            getEnabledFlows(tenant, "enabledflows2", resp);
+        }
     });
 };
 

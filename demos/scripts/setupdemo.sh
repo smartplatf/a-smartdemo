@@ -133,7 +133,7 @@ do
     defflow=${defenable[$tenant]}
     efeatures=${defenablefeatures[$tenant]}
     echo "[Creating Tenant "$demot" in domain "$demodomain"...]"
-    json=`postjson $smartowner $adminflow $newtenantevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"' },'enableFeatures':[ '"$efeatures"' ],'enableFlow':'"$defflow"','tenant':'"$demot"','domain':'"$demodomain"','clientOf':'SMART','controlsAdmin':'YES'}" $sessid`
+    json=`postjson $smartowner $adminflow $newtenantevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"' },'enableFeatures':[ '"$efeatures"' ],'enableFlow':'"$defflow"','tenant':'"$demot"','domain':'"$demodomain"','clientOf':'SMART'}" $sessid`
     message=`jsonval "$json" $depsrch`
     [ ! -z "$message" ] || die "Cannot create tenant "$demot" with domain "$demodomain" Error "$json
     echo "[Created Tenant "$demot" in domain "$demodomain"...]"
@@ -191,10 +191,10 @@ echo "[Authenticated Got sessionid: "$sessid"]"
 echo ""
 
 echo "[Creating roles for $roletenant ...]"
-json=`postjson $roletenant $secflow $createrole "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'roleName':'adminrole','permits':{'/ContactFlow/admin':'execute','AllFlows/all':'execute','/Security/all':'execute'}}" $sessid`
+json=`postjson $roletenant $secflow $createrole "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'roleName':'adminrole','permits':{'/ContactFlow/admin':'execute','/AllFlows/all':'execute','/Security/all':'execute'}}" $sessid`
 message=`jsonval "$json" $msgsrch`
 [ ! -z "$message" ] || die "Cannot create role for admin "$json
-json=`postjson $roletenant $secflow $createrole "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'roleName':'salesrole','permits':{'/ContactFlow/sales':'execute','/ContactFlow/admin':'read','AllFlows/all':'execute','/Security/all':'execute'}}" $sessid`
+json=`postjson $roletenant $secflow $createrole "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'roleName':'salesrole','permits':{'/ContactFlow/sales':'execute','/ContactFlow/admin':'read','/AllFlows/all':'execute','/Security/all':'execute'}}" $sessid`
 message=`jsonval "$json" $msgsrch`
 [ ! -z "$message" ] || die "Cannot create role for sales "$json
 echo "[Created roles for $roletenant ...]"

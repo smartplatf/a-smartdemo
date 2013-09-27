@@ -1,3 +1,20 @@
+########################################
+# This is part of the SMART demo for Basic Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/MessageFlow/....
+#
+# This file indicates the data, events, transitions
+# and feature classification of the classes in this jar file.
+# In this case, we have one event, one data, one transition
+# and we bucket all of them into a single "all" feature. So
+# when this flow is enabled for a tenant all the features
+# are enabled.
+#######################################
 name:   MessageFlow
 defaultEnable: all
 primeData:

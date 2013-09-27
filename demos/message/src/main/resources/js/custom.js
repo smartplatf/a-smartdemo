@@ -1,6 +1,6 @@
 function init()
 {
-    $("body").append("<script src='message-code/js/Message.js' type='text/javascript'></script>");
+    $("body").append("<script src='message-code/resources/js/Message.js' type='text/javascript'></script>");
     $("body").append("<script src='js/toastr.js' type='text/javascript'></script>");
 }
 

@@ -1,3 +1,26 @@
+#################################################################
+# This is part of the SMART demo for Basic Demo.
+#
+# This file describes the transition java class
+# MessageHandler. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have a transition for the DeActivateMessage event.
+# This event can only be called on Message data objects which are
+# in active state. When this transition is executed successfully
+# the state of the Message data object is changed to inactive.
+#
+# In our case, we do not write any method, we just reuse a common
+# transition service provided by SMART called changeState which is
+# already present in the flow called AllFlows in the transition 
+# TransitionServices. 
+#
+# A name is associated with each service or method called. This is
+# used to sequence method calls when required. Please see Survey
+# demos for this feature.
+###############################################################
 name:       MessageHandler
 type:       Transition
 flow:       MessageFlow
