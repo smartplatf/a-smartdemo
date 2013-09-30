@@ -1,3 +1,22 @@
+#########################################################
+# This is part of the SMART demo for Role-based Demo.
+#
+# This file describes the data class in the ContactFlow
+# If this file is not present, then SMART uses defaults
+# for all the values. By default the data will be named
+# as the Simple Class Name, the states will be active and
+# inactive and it will be protected by role access. The
+# key in this case has to be specified in the flow soa file
+#
+# In this file, we have specified the key as contactName. We want 
+# the data to be accessible without authentication for read
+# when access using the Enquire event. Hence we specify an
+# unauthenticated security for the data object for Enquire.
+# Any other event with no authentication will give a "Access
+# denied" error.
+#
+# All other events are governed by the role defined. 
+######################################################
 name:   Contact
 type:   PrimeData
 flow:   ContactFlow

@@ -1,3 +1,37 @@
+#################################################################
+# This is part of the SMART demo for Multi-tenancy Demo.
+#
+# This file describes the transition java class
+# SurveyManager. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have two transitions for the RecordAnswer event
+# and the CreatePrime event for the Questionaire object. The CreatePrime
+# is an event that can be used by all flows and hence can be appended to 
+# in this flow. 
+#
+# For recordAnswer transition, we have only one transition that is running
+# and hence has no runAfter or runBefore config. The parameters for the methods
+# are implicit parameters and hence no parms config is specified. It specifies
+# the state in which the Survey object has to be when this event is raised. If
+# the Survey object is in the inactive state, then this event cannot be raised
+# and if raised will give an error message even before any of the flow functions
+# are called.
+#
+# The createQuestionaire method is called for CreatePrime event. This is qualified
+# as to be called only for create of a Questionaire object. The createPrimeData is the
+# standard transition that is called in SMART for any of the CreatePrime calls. The
+# runAfter is configured here indicating that the createQuestionaire method should be
+# called after the createPrimeData method is called. The parameter to this method
+# is the newly created Questionaire object, hence this is specified in the parms as
+# txn.Questionaire. All newly created objects can be referenced by their object name
+# in this case Questionaire and hence this is used. Other explicit parms that can be specified
+# are srch that searches for an object, link that retrieves the link of an object, config,
+# data and event. This need not be an object and can dereference an attribute in any of
+# these objects and be passed.
+###############################################################
 name:       SurveyManager
 type:       Transition
 flow:       SurveyFlow

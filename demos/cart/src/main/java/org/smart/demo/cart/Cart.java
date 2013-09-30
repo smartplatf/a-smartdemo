@@ -1,40 +1,40 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.cart.Cart
- * Author:              rsankar
- * Revision:            1.0
- * Date:                09-19-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * A cart filled with items
+ * This is part of the SMART demo for Plug and Play Demo. 
+ *
+ * This class is a data class that stores data into the database.
+ * In SMART data is just a Serializable class. It converts directly
+ * into a single table in the database. The members of the class
+ * translate to columns in the database. When the members are
+ * sub objects, the column names are dereferenced by the member name.
+ *
+ * The tables are not created until the first data is created in SMART.
+ * In SMART all data is stored against a tenant. For the demo, this 
+ * class is used by the PPDemo tenant and deployed as a part of
+ * CartFlow jar. 
+ *
+ * In the demo when an object of this class is created, the following is
+ * the data structure (This is created as two separate tables for two different
+ * tenants created in the demo):
+ *
+ * Table created: __PPDemo-CartFlow__Cart
+ * Columns: column=d:Cart.cartName  - The name of the cart
+ *                 d:Cart.totalItems - The number of items in this cart.
+ *                 d:Cart.___smart_currentState___ - Added by SMART and stores the current state
+ *                 d:Cart.___smart_flow___ - Added by SMART and stores the flow this data belongs to
+ *                 d:Cart.___smart_legend___ - Added by SMART and has the createdOn, lastModifiedOn values
+ *
+ * By default SMART adds a synthetic key to this object and reference is stored
+ * against this key. The cartName is the key against which the synthetic key is 
+ * stored. The contactNotification being a transient field will not be stored in the
+ * database. 
  *
  * ************************************************************
  * */

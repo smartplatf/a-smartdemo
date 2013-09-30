@@ -1,3 +1,52 @@
+########################################
+# This is part of the SMART demo for Plug and Play Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/CartFlow/....
+#
+# This Flow has two data, 3 events, 1 transition and two
+# responses all bucketed into the all feature. The CartItem
+# data uses the standard configuration and hence the key is
+# just configured into this file.
+#
+# The links specifies the link between the two data objects 
+# and is used to establish a link table. This creates a table
+# called __PPDemo-CartFlow__CartItem__Cart which stores
+# the relations between Cart and CartItem.
+#
+# The needslink is the most important of this example. This
+# indicates to SMART that this flow has to be mashed up with
+# another flow when enabling. Since this does not have an
+# optional flag, this link has to be provided when enabled
+# and cannot be enabled without it.
+#
+# Further it says that the link is established via the AddToCart
+# event's cartItem. This link has to be specified if an
+# event has to be posted to an object of another flow.
+#
+# When this flow is enabled, the following is provided to link
+# the object:
+# 'links':[
+#   {
+#     'name':'itemlink', 
+#     'flow':'CatalogueFlow', 
+#     'object':'Catalogue',
+#     'attribute':'skuId'
+#   }
+# ]
+#
+# The first link establishes the itemlink which is the name of
+# the link here.
+#
+# Mashing up in this manner creates the table called
+# __PPDemo-CartFlow__CartItem__Catalogue
+# which stores the relation between CartItem and Catalogue.
+#
+#######################################
 name:   CartFlow
 defaultEnable: all
 primeData:

@@ -1,3 +1,26 @@
+########################################
+# This is part of the SMART demo for Role-based Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/ContactFlow/....
+#
+# This file indicates the data, events, transitions, responses,
+# and feature classification of the classes in this jar file.
+# In this case, we have two events, two data classes, one transition
+# and one response. We will bucket them all into an all bucket, so
+# that when enabled all the features can be enabled. Further we will
+# add two more buckets, "Admin" that will help to define the role
+# for admin and "sales" that will help define the role for sales.
+# Please note, the below classification can be used to enable also
+# just the given features for a tenant. For eg., a tenant1 can be 
+# created with just the admin features which implies that they can
+# just have a list of contacts, while  a tenant2 can have bothe
+# admin and the sales features.
+#######################################
 name:   ContactFlow
 defaultEnable: all
 primeData:

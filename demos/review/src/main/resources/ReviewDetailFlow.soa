@@ -1,3 +1,53 @@
+########################################
+# This is part of the SMART demo for Plug and Play Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/ReviewDetailFlow/....
+#
+# This file indicates that we have one data object
+# one event, one transition and one response. Since
+# we just use the default values for the data we provide
+# the key of the data object here. We have bucketed all
+# the classes into a single all feature which is enabled
+# by default.
+#
+# The needslink is the most important of this example. This
+# indicates to SMART that this flow has to be mashed up with
+# another flow when enabling. Since this does not have an
+# optional flag, this link has to be provided when enabled
+# and cannot be enabled without it.
+#
+# Further it says that the link is established via the WriteReview
+# event's reviewObject. This link has to be specified if an
+# event has to be posted to an object of another flow.
+#
+# When this flow is enabled, the following is provided to link
+# the object:
+# 'links':[
+#   {
+#     'name':'objlink', 
+#     'flow':'CatalogueFlow', 
+#     'object':'Catalogue',
+#     'attribute':'skuId'
+#   },
+#   {
+#     'name':'Reviewneedslink',
+#     'object':'Catalogue'
+#   }
+# ]
+#
+# The first link establishes the objlink which is the name of
+# the link here.
+#
+# Establishing this link creates the table called 
+# __PPDemo-ReviewDetailFlow__ReviewDetail__Catalogue which stores
+# the relations between the review detail and the catalogue items.
+#
+#######################################
 name:   ReviewDetailFlow
 defaultEnable: all
 primeData:

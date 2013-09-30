@@ -1,40 +1,36 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.cart.GetCartItems
- * Author:              rsankar
- * Revision:            1.0
- * Date:                19-09-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * Get the items in a given cart
+ * This is part of the SMART demo for Plug and Play Demo.
+ *
+ * This is an event class which sets the format for the json input
+ * for a service. This class defines the services exposed by the flow
+ * to the UI. The name specified for this class is the event in the 
+ * URL of the service used.
+ *
+ * In this demo, this class belongs to CartFlow flow, hence the
+ * URL to trigger this event is:
+ * http://server:port/tenant/CartFlow/GetCartItems
+ *
+ * This event expects parameters that are indicated by the member variables
+ * of the class. Here we do not expect any parameters since it is already
+ * posted to the cart for which data has to be retrieved.
+ *
+ * The expected format for posting using this event is as below:
+ *
+ * {
+ *   "Cart": {
+ *     "___smart_action___": "lookup",
+ *     "___smart_value___": "cart1381204430010"
+ *   }
+ * }
+ * 
  *
  * ************************************************************
  * */

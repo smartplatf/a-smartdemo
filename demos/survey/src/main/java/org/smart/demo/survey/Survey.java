@@ -1,41 +1,47 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.Survey
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
+ * This is part of the SMART demo for Multi-tenancy Demo. 
+ *
+ * In the current implementation a Survey is created when a Questionaire
+ * is created. This can be easily modified to create multiple surveys from
+ * the same questionaire. 
+ *
  * A survey created from a questionaire - current assumption is that there is
- * only one survey for one questionaire.
+ * only one survey for one questionaire. This object is linked to the questionaire
+ * by just using the same id as the questionaire id. Since the assumption is that
+ * there is only one Survey for every Questionaire, this will work, if not the
+ * correct design of linking a Survey to the Questionaire has to be done. Check
+ * out the mashup demo for more information on linking.
+ *
+ * This is a data object that will create a data table of the following format:
+ *
+ * Table created: __SurveyDemo1-SurveyFlow__Survey, __SurveyDemo2-SurveyFlow__Survey
+ * Columns: column=d:Survey.surveyId  - The name for this questionaire
+ *                 d:Survey.questionForEmail - This stores the question number which requires email
+ *                 d:Survey.summary - This class rolls up the survey summary into a list of QuestionSummary
+ *                                    This is stored for each question and rolls up the number of yes, no and maybe ans.
+ *                                    Note, while monitoring is a functionality that is provided out of box, this is
+ *                                    business specific where roll up is based on answer data and has to be implemented
+ *                                    separately.          
+ *                 A set of the below 3 fields are repeated for every question. In the demo we have 6 questions for 
+ *                 SurveyDemo1 and 5 questions for SurveyDemo2. Hence the table for SurveyDemo1 will have this repeated
+ *                 6 times, while for SurveyDemo2, this will be repeated 5 times.
+ *                 d:Survey.summary.0.ayes - This is an incrementing column. The 0 is incremented
+ *                                           for every object stored in the list. This stores the number of yes
+ *                 d:Survey.summary.0.nays - This is an incrementing column. The 0 is incremented
+ *                                           for every object stored in the list. This stores the number of nos
+ *                 d:Survey.summary.0.maybes - This is an incrementing column. The 0 is incremented
+ *                                             for every object stored in the list. This stores the number of maybes
+ *                 d:Survey.___smart_currentState___ - Added by SMART and stores the current state
+ *                 d:Survey.___smart_flow___ - Added by SMART and stores the flow this data belongs to
+ *                 d:Survey.___smart_legend___ - Added by SMART and has the createdOn, lastModifiedOn values
  *
  * ************************************************************
  * */

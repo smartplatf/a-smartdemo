@@ -1,41 +1,31 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.cart.CartManager
- * Author:              rsankar
- * Revision:            1.0
- * Date:                09-19-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * A Manager for the cart
+ * This is part of the SMART demo for Plug and Play Demo.
  *
+ * This class contains the functions that has to be executed when
+ * and event occurs. This is called transitions. When the AddToCart
+ * event is called, we create the CartItem object for the cartName
+ * to which this item is added. Since the CartItem is linked to an
+ * actual object, the actual object is populated by SMART.
+ *
+ * The removeFromCart is called when the RemoveFromCart event is
+ * raised. Since this needs to do nothing other than change the
+ * state of the CartItem to an inactive state, this function does
+ * nothing. SMART takes care of changing the state of the item.
+ *
+ * The getCartItems is called when GetCartItems event is called. The
+ * list all of standard SMART is used to only retrieve standard objects.
+ * THis event retrieves the items in a specific cart. This showcases
+ * how a linked object can be accepted as a input parameter for a 
+ * function. This has to be a explicit parameter that is specified in
+ * the soa file.
  * ************************************************************
  * */
 

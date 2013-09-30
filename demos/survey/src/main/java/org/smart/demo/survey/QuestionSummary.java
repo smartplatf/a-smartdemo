@@ -1,40 +1,23 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.QuestionSummary
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * An object that stores the summary of the ayes or nays for a questions
+ * This is part of the SMART demo for Multi-tenancy Demo. 
+ *
+ * This is a helper data object that is part of a prime data of
+ * SMART. SMART does not prevent usage of standard OOPs practices
+ * in defining data objects. Data objects can be defined normally with
+ * references to other data classes. This is a sample of one such
+ * reference. This class is used by the Survey data as a list of
+ * summary stored for each question of the Survey.
+ *
+ * This is stored as a part of the Survey data class and is 
+ * not stored separately.
  *
  * ************************************************************
  * */
@@ -43,10 +26,10 @@ package org.smart.demo.survey;
 
 public class QuestionSummary implements java.io.Serializable
 {
-    private int questionIndex;
-    private int ayes;
-    private int nays;
-    private int maybes;
+    private int questionIndex; //The question for which this summary is stored.
+    private int ayes; //THis number of yes answers
+    private int nays; //The number of no answers
+    private int maybes; //The number of maybe answers
 
     public QuestionSummary(int question)
     {

@@ -1,3 +1,24 @@
+########################################
+# This is part of the SMART demo for multitenancy Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/SurveyFlow/....
+#
+# This file indicates the data, events, transitions, responses,
+# and feature classification of the classes in this jar file.
+# In this case, we have two events, two data classes, one transition
+# and one response. We will bucket all classes into a basic feature
+# other than the SurveyValidator. The SurveyValidator is bucketed into
+# a advanced feature. The SurveyDemo1 will have the basic feature enabled
+# while the SurveyDemo2 will have the basic and the advanced feature
+# enabled. Thus a question which requires email when answered yes
+# in SurveyDemo1 will be recorded without an email correctly in
+# SurveyDemo2 the same will be give an error.
+#######################################
 name:           SurveyFlow
 defaultEnable:  basic
 primeData:

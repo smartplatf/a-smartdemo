@@ -1,39 +1,32 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.contact.CloseEnquiry
- * Revision:            1.0
- * Date:                05-09-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * An event to close enquiry
+ * This is part of the SMART demo for Role-based Demo.
+ *
+ * This is an event class which sets the format for the json input
+ * for a service. This class defines the services exposed by the flow
+ * to the UI. The name specified for this class is the event in the 
+ * URL of the service used.
+ *
+ * In this demo, this class belongs to ContactFlow flow, hence the
+ * URL to trigger this event is:
+ * http://server:port/tenant/ContactFlow/CloseEnquiry
+ *
+ * In this event, no other inputs are expected. In the demo, this
+ * event is posted to the Enquiry Data object. The expected format for
+ * posting using this event is as below:
+ *
+ * {'Enquiry':{'___smart_action___':'lookup','___smart_value___':'ID of the enquiry'}}
+ *
+ * ID of the enquiry in this case is a UUID. This is the value of the key field in Enquiry object. 
+ * The lookup specifies that we lookup a value, this can be a search also. In this case
+ * the event is posted to all the objects that match the search criteria specified.
  *
  * ************************************************************
  * */

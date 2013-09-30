@@ -1,3 +1,37 @@
+#################################################################
+# This is part of the SMART demo for Plug and Play Demo.
+#
+# This file describes the transition java class
+# ReviewTransaction. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have a transition for the WriteReview event. We
+# do not know the exact object to which this will be linked, hence we
+# give a name "Review" and append it to "needslink". This tells
+# SMART that when this flow is enabled for a tenant this link has to
+# be filled, if it is not, then the writeReview transition is never 
+# called. This is called mashing up a transition for an object.
+#
+# In out demo when we enable the flow for the PPDemo we enable it with 
+# the following link to mash this up:
+# 'links':[
+#   {
+#     'name':'objlink', 
+#     'flow':'CatalogueFlow', 
+#     'object':'Catalogue',
+#     'attribute':'skuId'
+#   },
+#   {
+#     'name':'Reviewneedslink',
+#     'object':'Catalogue'
+#   }
+# ]
+# This has indicated that the Reviewneedslink has to be linked to
+# the catalogue object.
+#
+###############################################################
 name:       ReviewTransaction
 type:       Transition
 flow:       ReviewDetailFlow

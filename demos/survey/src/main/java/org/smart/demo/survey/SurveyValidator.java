@@ -1,40 +1,26 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.SurveyValidator
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
  * REVISIONS
  * ************************************************************
- * Validates the answers that are given for recording.
+ * This is part of the SMART demo for Multi-Tenancy Demo.
+ *
+ * This class contains the functions that has to be executed when
+ * and event occurs. This is called transitions. When the RecordAnswer
+ * event is called, we validate that the email is recorded if the
+ * answer for which email is provided is answered is answered as yes.
+ * This is a validation transition and throws and exception if the 
+ * email is not present which rollsback the transaction and returns the
+ * exception.
+ *
+ * This transition is also bucketed into a separate feature and is only
+ * enabled for SurveyDemo2 which showcases how customizations can be done
+ * by enabling only certain features for certain tenants without actually
+ * adding IF clauses in the code with flags littered all over the place.
  *
  * ************************************************************
  * */
@@ -45,6 +31,12 @@ import java.util.List;
 
 public class SurveyValidator
 {
+    /**
+     * VAlidate that an email is provided if a question exists in the survey
+     * which requires an email for an answer of yes. If the email is provided
+     * then just return else raise an exception so that the transaction is rolled 
+     * back.
+     * */
     public void validateSurveyResponse(Survey survey, RecordAnswer answer)
         throws Exception
     {

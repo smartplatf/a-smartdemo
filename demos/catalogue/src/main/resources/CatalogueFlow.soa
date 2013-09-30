@@ -1,3 +1,26 @@
+########################################
+# This is part of the SMART demo for Plug and Play Demo.
+#
+# This file describes the jar file that is 
+# deployed. The name is the handle via which all
+# events to this flow are referenced. In this case,
+# all services exposed will be of the format
+#
+# http://server:port/tenant/CatalogueFlow/....
+#
+# This file indicates the data, events, transitions
+# and feature classification of the classes in this jar file.
+# In this case, we have only one data. All the others are used
+# from the default SMART provided functions. We bucket this data
+# into a single all feature which is enabled for the tenant.
+#
+# The data has no specific soa file specified and hence all the
+# defaults are used for it. The Key is specified in the keys tag
+# as the skuId.
+#
+# This is the minimum soa file that is required to deploy a
+# flow in SMART.
+#######################################
 name:   CatalogueFlow
 defaultEnable: all
 primeData:

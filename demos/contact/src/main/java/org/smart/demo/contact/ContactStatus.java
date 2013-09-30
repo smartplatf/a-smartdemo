@@ -1,40 +1,40 @@
 /**
- * SMART - State Machine ARchiTecture
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of SMART.
- *
- * SMART is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * SMART is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
- 
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.contact.ContactStatus
- * Author:              rsankar
- * Revision:            1.0
- * Date:                22-08-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * A status for contact
+ * This is part of the SMART demo for Role-based Demo.
+ *
+ * A response class is a serializable class in SMART which indicates
+ * the fields that has to be sent back to the requestor in the json
+ * format. A response is sent by virtue of it being created
+ * in a transition that is run for an event. Responses are only
+ * sent for external events. Internal events, i.e., events raised
+ * within SMART for asynchronous processing cannot send back 
+ * responses.
+ *
+ * The ContactStatus response as created will create the following 
+ * response:
+ * {
+ *   "event": "4260e664-4e76-40ab-976d-37c7098cbeb9",
+ *   "responses": [
+ *   {
+ *      "message": "An email has been sent.",
+ *      "___smart_responseid___": "b1d3bcee-0298-4d0e-b2a9-946db9d5495e"
+ *   }
+ *   ]
+ * }
+ *
+ * All responses are embedded with a ___smart_responseid___ that can be used
+ * to track the response. The event is used to track the event for which this
+ * response has been sent. The responses tag is an array and is a list of all
+ * the responses that has been created during the execution of transitions for
+ * the event. In our case only one response object ContactStatus is created
+ * and hence the response sent back has only ContactStatus.
  *
  * ************************************************************
  * */
