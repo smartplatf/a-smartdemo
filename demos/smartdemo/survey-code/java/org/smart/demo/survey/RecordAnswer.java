@@ -1,40 +1,46 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.RecordAnswer
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
  * REVISIONS
  * ************************************************************
- * An event that occurs to record a single answer for a survey
+ * This is part of the SMART demo for Multi tenancy Demo.
+ *
+ * This is an event class which sets the format for the json input
+ * for a service. This class defines the services exposed by the flow
+ * to the UI. The name specified for this class is the event in the 
+ * URL of the service used.
+ *
+ * In this demo, this class belongs to ContactFlow flow, hence the
+ * URL to trigger this event is:
+ * http://server:port/tenant/SurveyFlow/RecordAnswer
+ *
+ * This event expects parameters that are indicated by the member variables
+ * of the class. In this case, answers and email.
+ * The event is posted to the Survey object. The expected format for
+ * posting using this event is as below:
+ *
+ * {
+ *   "answers": [
+ *     {
+ *       "answer": "aye"
+ *     },
+ *     ... Repeated for each question in Questionaire ...
+ *  ],
+ *  "Survey": {
+ *    "___smart_action___": "lookup",
+ *    "___smart_value___": "demo1questions"
+ *  }
+ * }
+ * 
+ *
+ * The Survey name has to be the name of the survey to record the answer against.
+ * The answers are repeated for each of the questions in the Survey. The email is included
+ * if an email is provided. The lookup specifies that we lookup a value, this can be a search also. In this case
+ * the event is posted to all the objects that match the search criteria specified.
  *
  * ************************************************************
  * */

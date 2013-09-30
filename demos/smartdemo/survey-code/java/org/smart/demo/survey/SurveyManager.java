@@ -1,40 +1,44 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.SurveyManager
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * An object that stores the summary of the ayes or nays for a questions
+ * This is part of the SMART demo for Multi-Tenancy Demo.
+ *
+ * This class contains the functions that has to be executed when
+ * and event occurs. This is called transitions. When the RecordAnswer
+ * event is called, we update the summary in the survey object with
+ * the answers. We also create a SurveyAnswer object. When a Questionaire
+ * is created with CreatePrime event we want to create the Survey object
+ * also. This class demonstrates how we can append a transition to be
+ * executed when CreatePrime is called and how to sequence the transitions.
+ *
+ * The parameters to transitions can be of two types, "Implicit parameters"
+ * and "Explicit parameters". Implicit parameters are events, data, configurations
+ * that can be derived from the event that is raised. For eg., the method recordAnswer
+ * here accepts two implicit parameters. The RecordAnswer event that is raised
+ * and the Survey data on which the event is raised. Explicit parameters are
+ * parameters that are passed by specifying what should be passed. For eg.,
+ * in the createQuestionaire function, the parameters passed are neither the
+ * event nor the data object, but the object that is created within this transaction.
+ * Such objects can be referenced using tags. All objects created or added to
+ * a transaction is referencible by their object name. In this case Questionaire.
+ * Explicit parameters are specified in the parms configuration in the soa file.
+ * Refer to the soa file for more details here.
+ *
+ * Any data object created within a transition is automatically added to the
+ * transaction and commite or rolledback when the transaction is committed. The 
+ * transaction span across all the transitions that are run for any given event and
+ * is committed only if no exception is thrown by any of the transitions. If an
+ * exception is thrown, then the transaction is rolled back and the exception is
+ * returned as an Error response.
+ *
+ * Refer to transitions documentation for more details.
+ *
  *
  * ************************************************************
  * */
@@ -46,6 +50,11 @@ import java.util.ArrayList;
 
 public class SurveyManager implements java.io.Serializable
 {
+    /**
+     * A transition to be called  when RecordAnswer event is raised on the Survey object.
+     * This function creates a single SurveyAnswer object for this answer and updates
+     * the Survey object's Summary appropriately.
+     * */
     public void recordAnAnswer(Survey survey, RecordAnswer answer)
     {
         List<OneAnswer> answers = answer.getAnswers();
@@ -67,6 +76,10 @@ public class SurveyManager implements java.io.Serializable
         Recorded reply = new Recorded();
     }
 
+    /**
+     * This function is called when a Questionaire object is created. The Survey object
+     * is also created when a Questionaire object is created.
+     * */
     public void createQuestionaire(Questionaire questionaire)
     {
         //This object should not be null, if it is, then handle it. It is a TODO.

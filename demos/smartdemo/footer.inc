@@ -85,7 +85,7 @@
         });
 
         $(document).ready(function() {
-            smartconfig.server = "192.168.1.4";
+            smartconfig.server = "192.168.1.2";
             smartconfig.smartPort = 9081;
             smartconfig.uploadPort = 9021;
             smartconfig.tenant = "<?php echo $tenant; ?>";

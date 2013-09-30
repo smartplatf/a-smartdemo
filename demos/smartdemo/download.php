@@ -16,41 +16,64 @@ $setsession = $details['setsession'];
     <?php
         $uitemp->addHeader("Linux");
     ?>
-    <p>
-    To install SMART on Linux
+    <h5>
+    Preparation
+    </h5>
+    <div class="bullet_arrow3">
+    <ul>
+        <li>Edit /etc/hosts file. Add to this the ip address of your machine and map it to the name hadoop.
+        <pre>
+        For eg.,
+        192.168.1.4    hadoop
+        127.0.0.1 localhost
+        127.0.0.1 platform-dev-debian
+        </pre>
+        </li>
+        <li>Create a user for SMART using the command
+        <pre>
+            useradd -m -d /home/smartuser smartuser
+            passwd smartuser - enter the password to setup the password.
+         </pre>
+        </li>
+        <li>login as smartuser</li>
+        <li>Setup the JAVA_HOME to the correct java home.</li>
+    </ul>
+    </div>
+    <h5>
+    Installation
+    </h5>
+    <div class="bullet_arrow3">
+    <ul>
+        <li>Run the command "curl http://fixchg.com/installweb.sh | sh"</li>
+    </ul>
+    <p>Check out manual installation and service installation steps at:
+    <a target="_blank" href="https://github.com/smartplatf/a-smart/blob/master/sm.kernel/src/main/resources/README">github</a>
     </p>
-
-    <p>
-    The top section can be split again into two. The left section is the UI rendering for the feature. This is a bare minimum, written as HTML code with calls made to the server using AJAX calls. The right hand box shows the requests sent to the server and the response got back from the server that is rendered in the UI.
-    </p>
-
-    <p>
-    The bottom section has three tabs. You can browse the code used for the working example. There are typically two folders. The "java" folder has the java code while the "resources" folder has the SMART Object annotation(soa) files, the js files and the html used in the working example.
-
-    The setup tab has the JSONs that can be posted to any server to get the sample working. It shows the tenants created and the flows enabled for them to get this working. Download the script from github to setup all the samples at one go. The script works in linux.
-
-    The documentation tab has more details about the sample and how to use the features used in the sample in your flows.
-    </p>
+    </div>
     </div>
     <div class="row">
     <?php
         $uitemp->addHeader("Windows");
     ?>
-    <p>
-    SMART can be easily installed using a single shell command.
-    </p>
-
-    <p>
-    The top section can be split again into two. The left section is the UI rendering for the feature. This is a bare minimum, written as HTML code with calls made to the server using AJAX calls. The right hand box shows the requests sent to the server and the response got back from the server that is rendered in the UI.
-    </p>
-
-    <p>
-    The bottom section has three tabs. You can browse the code used for the working example. There are typically two folders. The "java" folder has the java code while the "resources" folder has the SMART Object annotation(soa) files, the js files and the html used in the working example.
-
-    The setup tab has the JSONs that can be posted to any server to get the sample working. It shows the tenants created and the flows enabled for them to get this working. Download the script from github to setup all the samples at one go. The script works in linux.
-
-    The documentation tab has more details about the sample and how to use the features used in the sample in your flows.
-    </p>
+    <h5>
+    Preparation
+    </h5>
+    <div class="bullet_arrow3">
+    <ul>
+        <li>Start Powershell in administration mode. The Powershell version should be 3 or greater.</li>
+        <li>mkdir smartinstall (Or the directory you want install in)</li>
+        <li>cd smartinstall</li>
+        <li>Setup the JAVA_HOME to the correct java home and ensure java is in the path.</li>
+    </ul>
+    </div>
+    <h5>
+    Installation
+    </h5>
+    <div class="bullet_arrow3">
+    <ul>
+        <li>Run the command "Invoke-RestMethod http://fixchg.com/installweb.ps1 -OutFile installweb.ps1;./installweb.ps1"</li>
+    </ul>
+    </div>
     </div>
     <?php include("footer.inc") ?>
 </body>

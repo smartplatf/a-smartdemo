@@ -1,3 +1,19 @@
+#################################################################
+# This is part of the SMART demo for Multi-tenancy Demo.
+#
+# This file describes the transition java class
+# SurveyValidator. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have a transition for the RecordAnswer event. We want
+# the validation to run before the recordAnswer transition is run.  Hence
+# we specify the runBefore for the validateSurveyResponse as recordAnAnswer.
+# If this transition is not enabled, then the sequence is not created
+# and only the recordAnAnswer transition is run.
+#
+###############################################################
 name:       SurveyValidator
 type:       Transition
 flow:       SurveyFlow

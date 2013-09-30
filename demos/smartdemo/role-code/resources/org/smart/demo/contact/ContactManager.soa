@@ -1,3 +1,21 @@
+#################################################################
+# This is part of the SMART demo for Role-based Demo.
+#
+# This file describes the transition java class
+# ContactManager. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have a transition for the Enquire and CloseEnquiry events.
+# One transition class can handle more than one events. The Enquire event
+# is handled by a function in this class called enquiry while the CloseEnquiry
+# is handled by a standard changeState transition.
+#
+# A name is associated with each service or method called. This is
+# used to sequence method calls when required. Please see Survey
+# demos for this feature.
+###############################################################
 name:       ContactManager
 type:       Transition
 flow:       ContactFlow

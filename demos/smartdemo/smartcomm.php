@@ -1,7 +1,7 @@
 <?php
 class smartcomm
 {
-    private $smartsvr = "192.168.1.4";
+    private $smartsvr = "192.168.1.2";
     private $smartport = "9081";
     private $origin = "http://localhost";
 

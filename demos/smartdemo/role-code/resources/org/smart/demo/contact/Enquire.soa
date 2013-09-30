@@ -1,3 +1,19 @@
+#########################################################
+# This is part of the SMART demo for Role-based Demo.
+#
+# This file describes the event class in the ContactFlow
+# If this file is not present, then SMART uses defaults
+# for all the values. By default the data will be named
+# as the Simple Class Name, and the access allowed will be
+# a role based access. Unless an explicit access is granted
+# the event cannot be raised.
+#
+# In this file, we have specified that this event can be 
+# accessed without authentication since an enquire event
+# can be raised by any one and this is handled by the sales
+# team.
+#
+######################################################
 name:       Enquire
 type:       Event
 flow:       ContactFlow

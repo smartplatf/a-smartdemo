@@ -1,40 +1,42 @@
 /**
- * Demo - A demo for using the SMART platform
- *
- * Copyright (C) 2012 Individual contributors as indicated by
- * the @authors tag
- *
- * This file is a part of Utilities.
- *
- * Utilities is a free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Utilities is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *
- * */
-
-/**
  * ************************************************************
  * HEADERS
  * ************************************************************
  * File:                org.smart.demo.survey.Recorded
- * Author:              rsankar
- * Revision:            1.0
- * Date:                17-04-2013
  *
  * ************************************************************
- * REVISIONS
+ * SUMMARY
  * ************************************************************
- * A response sent back once the answer is recorded.
+ * This is part of the SMART demo for Multi tenancy Demo.
+ *
+ * A response class is a serializable class in SMART which indicates
+ * the fields that has to be sent back to the requestor in the json
+ * format. A response is sent by virtue of it being created
+ * in a transition that is run for an event. Responses are only
+ * sent for external events. Internal events, i.e., events raised
+ * within SMART for asynchronous processing cannot send back 
+ * responses.
+ *
+ * The Recorded response as created will create the following 
+ * response:
+ * {
+ *   "event": "9a137301-508e-4469-a55a-b0a00f166757",
+ *     "responses": [
+ *         {
+ *               "done": "Done",
+ *               "___smart_responseid___": "1d06b71e-428c-48af-8377-5bf290b91d39"
+ *         }
+ *      ]
+ * }
+ * 
+ *
+ * All responses are embedded with a ___smart_responseid___ that can be used
+ * to track the response. The event is used to track the event for which this
+ * response has been sent. The responses tag is an array and is a list of all
+ * the responses that has been created during the execution of transitions for
+ * the event. In our case only one response object Recorded is created
+ * and hence the response sent back has only Recorded.
+ *
  *
  * ************************************************************
  * */

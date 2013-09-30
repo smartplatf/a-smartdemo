@@ -105,7 +105,7 @@ $uitemp = new uitemplate;
                         </ul>
                         <ul class="nav pull-right">
                             <li><a href="readme.php">Read Me</a></li>
-                            <li><a href="download.php">Download SMART</a></li>
+                            <li><a href="download.php">Install SMART</a></li>
                         </ul>
                     </div>
                 </div>
