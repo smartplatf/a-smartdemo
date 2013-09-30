@@ -16,7 +16,7 @@ $setsession = $details['setsession'];
         $uitemp->addHeader("Information");
     ?>
     <p>
-    The Demos are working examples of the different features present in SMART platform. Below shows the different sections and the information shown in each section.
+    The Demos are working examples of the different features present in SMART platform. Below shows the different sections and the information shown in each section. Click on the Demo link to see the demos.
     </p>
 
     <div class="span12 post">
