@@ -1,0 +1,35 @@
+#########################################################
+# This is part of the SMART petstore blueprint.
+#
+# This file describes the data class in the CartFlow
+# If this file is not present, then SMART uses defaults
+# for all the values. By default the data will be named
+# as the Simple Class Name, the states will be active and
+# inactive and it will be protected by role access. The
+# key in this case has to be specified in the flow soa file
+#
+# In this file we override the required states of a Cart
+# and have the states empty, added and inactive. The key
+# is specified as the cartName
+######################################################
+name:   Cart
+type:   PrimeData
+flow:   PetstoreCartFlow
+attributes:
+    - attribute:    cartName
+      type:         key
+states:
+    - name:         empty
+      startState:   true
+    - name:         added
+      startState:   false
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   execute
+      parm:     CreatePrime,ListAllEvent,SearchEvent,LookupEvent,AddToCart,GetCartItems
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

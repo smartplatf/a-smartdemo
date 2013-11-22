@@ -1,0 +1,28 @@
+EST-1|FISH|AngelFish|Large, Cuddly AngelFish|16.50|Salt Water fish from Australia|1|images/fish1.jpg
+EST-2|FISH|AngelFish|Small AngelFish|16.50|Salt Water fish from Australia|1|images/fish1.jpg
+EST-3|FISH|Tiger Shark|Toothless, Mean Tiger Shark|18.50|Salt Water fish from Australia|1|images/fish4.gif
+EST-4|FISH|Koi|Spotted Koi|18.50|Fresh water fish from Japan|1|images/fish3.gif
+EST-5|FISH|Koi|Spotless Koi|18.50|Fresh water fish from Japan|1|images/fish3.gif
+EST-6|DOGS|BullDog|Male Adult BullDog|18.50|Friendly Dog from England|1|images/dog2.gif
+EST-7|DOGS|BullDog|Female Puppy BullDog|18.50|Friendly Dog from England|1|images/dog2.gif
+EST-8|DOGS|Poodle|Male Puppy Poodle|18.50|Cute Dog from France|1|images/dog6.gif
+EST-9|DOGS|Dalmation|Spotless Male Puppy Dalmation|18.50|Great Dog for a fire station|1|images/dog5.gif
+EST-10|DOGS|Dalmation|Spotless Adult Female Dalmation|18.50|Great Dog for a fire station|1|images/dog5.gif
+EST-11|REPTILES|RattleSnake|Venomless RattleSnake|18.50|Doubles as a watchdog|1|images/lizard3.gif
+EST-12|REPTILES|RattleSnake|Rattleless RattleSnake|18.50|Doubles as a watchdog|1|images/lizard3.gif
+EST-13|REPTILES|Iguana|Green Adult Iguana|18.50|Friendly green friend|1|images/lizard2.gif
+EST-14|CATS|Manx|Tailess Manx|58.50|Great for reducing mouse populations|1|images/cat3.gif
+EST-15|CATS|Manx|With Tail Manx|23.50|Great for reducing mouse populations|1|images/cat3.gif
+EST-16|CATS|Persian|Adult Female Persian|93.50|Friendly house cat, doubles as a princess|1|images/cat1.gif
+EST-17|CATS|Persian|Adult Male Persian|93.50|Friendly house cat, doubles as a princess|1|images/cat1.gif
+EST-18|BIRDS|Amazon Parrot|Adult Male Amazon Parrot|193.50|Great companion for upto 75 years|1|images/bird4.gif
+EST-19|BIRDS|Finch|Adult Male Finch|15.50|Great stress reliever|1|images/bird1.gif
+EST-20|FISH|Goldfish|Adult Male Goldfish|5.50|Fresh water fish from China|1|images/fish2.gif
+EST-21|FISH|Goldfish|Adult Female Goldfish|5.29|Fresh water fish from China|1|images/fish2.gif
+EST-22|DOGS|Golden Retriever|Adult Male Golden Retriever|135.50|Great Family Dog|1|images/dog1.gif
+EST-23|DOGS|Golden Retriever|Adult Female Golden Retriever|145.49|Great Family Dog|1|images/dog1.gif
+EST-24|DOGS|Golden Retriever|Male Puppy Golden Retriever|255.50|Great Family Dog|1|images/dog1.gif
+EST-25|DOGS|Golden Retriever|Female Puppy Golden Retriever|325.29|Great Family Dog|1|images/dog1.gif
+EST-26|DOGS|Chihuahua|Adult Male Chihuahua|125.50|Great Companion Dog|1|images/dog4.gif
+EST-27|DOGS|Chihuahua|Adult Female Chihuahua|155.29|Great Companion Dog|1|images/dog4.gif
+EST-28|DOGS|Labrador Retriever|Adult Female Labrador Retriever|155.29|Great Hunting Dog|1|images/dog5.gif

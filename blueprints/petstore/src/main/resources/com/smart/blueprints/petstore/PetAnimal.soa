@@ -1,0 +1,19 @@
+name:   PetAnimal
+type:   PrimeData
+flow:   PetAnimalFlow
+attributes:
+    - attribute:    id
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   read
+      parm:     ListAllEvent,SearchEvent,LookupEvent,AddToCart,GetCartItems
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

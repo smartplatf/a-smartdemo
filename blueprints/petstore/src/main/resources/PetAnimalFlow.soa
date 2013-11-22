@@ -1,0 +1,15 @@
+name:   PetAnimalFlow
+defaultEnable: all
+primeData:
+    - com.smart.blueprints.petstore.PetAnimal
+config:
+    - com.smart.blueprints.petstore.PetCategory
+features:
+    - name: all
+      artefacts:
+        - com.smart.blueprints.petstore.PetAnimal
+        - com.smart.blueprints.petstore.PetCategory
+security:
+    - name: imageaccess
+      parms: DownloadEvent
+      guardtype: unauthenticated
