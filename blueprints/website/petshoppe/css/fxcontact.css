@@ -1,0 +1,83 @@
+.fxcontactboxhover { 
+background-position: 50% 50%;  
+background-color: #111; 
+background-repeat: no-repeat; 
+color: #ffffff; 
+z-index: 999999999999999; 
+width: 30px; 
+height: 85px; 
+text-indent: -99999px; 
+position: fixed; 
+top: 295px; 
+right: 0px; 
+cursor: pointer; 
+-webkit-transition: all .7s ease-in-out; 
+-moz-transition: all .7s ease-in-out; 
+-o-transition: all .7s ease-in-out; 
+-ms-transition: all .7s ease-in-out; 
+transition: all .7s ease-in-out; 
+overflow: crop; 
+}  
+
+.fxcontactrotate { 
+-webkit-transform: rotate(-90deg); 
+-moz-transform:rotate(-90deg);
+-o-transform: rotate(-90deg);
+-ms-transform: rotate(-90deg); 
+-ms-transform: translate(-55px, 10px);
+z-index: 9999999999999999; 
+text-indent: 0px; 
+position: relative; 
+right: -53px;
+bottom: 5px; 
+writing-mode:tb-rl;
+display:block;
+white-space:nowrap;
+font-weight: bold; 
+width: 30px;
+height: 130px;
+color:#ffffff; 
+} 
+
+.fxcontactboxhover:hover { 
+background-color: #e48d2a; 
+} 
+
+.fxcontactboxwhite { 
+padding: 25px; 
+margin-bottom:20px; 
+width: 250px; 
+height: 100px;
+background:url(http://localhost/fixchgnew/images/light.png) repeat #FFFFFF; 
+border:1px solid #E4E4E4; 
+-webkit-box-shadow: 0 8px 6px -6px #ddd; 
+-moz-box-shadow: 0 8px 6px -6px #ddd; 
+box-shadow: 0 8px 6px -6px #ddd; 
+filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30); 
+-ms-filter: 'progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=0.30)'; 
+zoom: 1; 
+} 
+
+.fxpopup { 
+z-index: 999999999999999; 
+position: fixed; 
+top: 295px; 
+right: -500px; 
+-webkit-transition: all 1s ease-in-out; 
+-moz-transition: all 1s ease-in-out; 
+-o-transition: all 1s ease-in-out; 
+-ms-transition: all 1s ease-in-out; 
+transition: all 1s ease-in-out; 
+overflow: auto; 
+}
+
+
+#wdt-links {
+	font-size: 11px;
+    height: 25px;
+    line-height: 25px;
+    margin: -9px 7px;
+    text-transform: uppercase;
+}
+
+.right {float:right;}
