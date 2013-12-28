@@ -4,12 +4,24 @@ primeData:
     - com.smart.blueprints.petstore.PetAnimal
 config:
     - com.smart.blueprints.petstore.PetCategory
+events:
+    - com.smart.blueprints.petstore.LoadPets
+responses:
+    - com.smart.blueprints.petstore.LoadStatus
+transitions:
+    - com.smart.blueprints.petstore.PetLoader
 features:
     - name: all
       artefacts:
         - com.smart.blueprints.petstore.PetAnimal
         - com.smart.blueprints.petstore.PetCategory
+        - com.smart.blueprints.petstore.PetLoader
+        - com.smart.blueprints.petstore.LoadPets
+        - com.smart.blueprints.petstore.LoadStatus
 security:
     - name: imageaccess
       parms: DownloadEvent
+      guardtype: unauthenticated
+    - name: loaddata
+      parms: LoadPets
       guardtype: unauthenticated

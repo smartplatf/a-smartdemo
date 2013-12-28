@@ -57,14 +57,17 @@ public class CartItem implements java.io.Serializable
 {
     private UUID itemID;
     private String cartName;
+    private double price;
     private Object actualItem;
 
-    public CartItem(String cart)
+    public CartItem(String cart, double p)
     {
         cartName = cart;
+        price = p;
         itemID = UUID.randomUUID();
     }
 
+    public double getPrice() { return price; }
     public String getCartItem() { return cartName; }
     public UUID getItemID() { return itemID; }
     public Object getActualItem() { return actualItem; }

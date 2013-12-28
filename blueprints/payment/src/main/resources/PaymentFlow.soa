@@ -1,0 +1,20 @@
+name:   PaymentFlow
+defaultEnable: all
+primeData:
+    - com.smart.blueprints.payment.Payment
+events:
+    - com.smart.blueprints.payment.PayEvent
+responses:
+    - com.smart.blueprints.payment.PayStatus
+transitions:
+    - com.smart.blueprints.payment.PaymentManager
+features:
+    - name: all
+      artefacts:
+        - com.smart.blueprints.payment.Payment
+        - com.smart.blueprints.payment.PayEvent
+        - com.smart.blueprints.payment.PayStatus
+        - com.smart.blueprints.payment.PaymentManager
+needlinks:
+    - name: paymentlink
+      from: Payment.orderId

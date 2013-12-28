@@ -29,7 +29,7 @@ security:
     - name:     msgaccess
       type:     unauthenticated
       access:   execute
-      parm:     CreatePrime,ListAllEvent,SearchEvent,LookupEvent,AddToCart,GetCartItems
+      parm:     CreatePrime,ListAllEvent,SearchEvent,LookupEvent,AddToCart,GetCartItems,CheckOut
     - name:     roleaccess
       type:     smartrole
       access:   execute

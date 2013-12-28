@@ -1,0 +1,11 @@
+name:       PetLoader
+type:       Transition
+flow:       PetAnimalFlow
+foreach:        FlowAdmin|LoadPets
+actions:
+    - name:     loadBlueprintPets
+      method:   loadBlueprintPets
+      foreach:  FlowAdmin|LoadPets
+      from:     active
+      to:       active
+

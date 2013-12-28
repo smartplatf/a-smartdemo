@@ -32,17 +32,20 @@
 package com.smart.blueprints.cart;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class CartManager
 {
-    public void addToCart(AddToCart evt, Cart data)
+    public void addToCart(AddToCart evt, Cart data, Double cost)
         throws Exception
     {
         //Add your code to process the event here.
         //data is the data to which the event is posted
         //evt is the event posted.
         
-        CartItem item = new CartItem(data.getCartName());
+        if (cost == null)
+            cost = 0.0;
+        CartItem item = new CartItem(data.getCartName(), cost);
         data.addItem(item);
         StatusMessage msg = new StatusMessage("Added item to cart: " + data.getCartName());
     }
@@ -57,6 +60,23 @@ public class CartManager
         throws Exception
     {
         CartDetails det = new CartDetails(cart, items);
+    }
+
+    public void checkoutItems(CheckOut event, Cart cart, List<CartItem> items)
+        throws Exception
+    {
+        List<Object> cItems = new ArrayList<Object>();
+        if ((items == null) || (items.size() <= 0))
+            throw new Exception("No Items in the cart to checkout.");
+
+        for (int i = 0; (items != null) && (i < items.size()); i++)
+        {
+            cItems.add(items.get(i).getActualItem());
+        }
+        event.setCartItems(cItems);
+        //assumption is that the response is sent via the service, if not setup
+        //there is no response for this service?
+        //StatusMessage msg = new StatusMessage("Checked out: " + cart.getCartName());
     }
 }
 

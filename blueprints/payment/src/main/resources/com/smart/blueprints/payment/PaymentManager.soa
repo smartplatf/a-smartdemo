@@ -1,0 +1,11 @@
+name:       PaymentManaager
+type:       Transition
+flow:       PaymentFlow
+foreach:        Paymentneedslink|PayEvent
+actions:
+    - name:     payOrder
+      method:   payOrder
+      parms:    (event,needslink.orderId,needslink.costprice)
+      foreach:  Paymentneedslink|PayEvent
+      from:     active
+      to:       active

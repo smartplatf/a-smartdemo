@@ -1,0 +1,68 @@
+name:       GeoLocationManager
+type:       Transition
+flow:       GeoLocationFlow
+foreach:        FlowAdmin|AutoCompleteLocation,FlowAdmin|CreateLocation,FlowAdmin|SearchNear
+actions:
+    - name:      getAutoComplete
+      method:    getAutoComplete
+      foreach:   FlowAdmin|AutoCompleteLocation
+      from:      active
+      to:        active
+    - name:      createAutoCompleteResponse
+      method:    createAutoCompleteResponse
+      foreach:   FlowAdmin|AutoCompleteLocation
+      runAfter:  googleautocomplete
+      from:      active
+      to:        active
+    - name:      setupAddPlace
+      method:    setupAddPlace
+      foreach:   FlowAdmin|CreateLocation
+      from:      active
+      to:        active
+    - name:      createLocation
+      method:    createLocation
+      foreach:   FlowAdmin|CreateLocation
+      runAfter:  googleaddplace
+      from:      active
+      to:        active
+    - name:      setupPlaces
+      method:    setupPlaces
+      foreach:   FlowAdmin|SearchNear
+      from:      active
+      to:        active
+    - name:      setupLocation
+      method:    setupLocation
+      foreach:   FlowAdmin|SearchNear
+      runAfter:  googlenearbysearch
+      from:      active
+      to:        active
+    - name:      createresult
+      method:    getLocations
+      foreach:   FlowAdmin|SearchNear
+      runAfter:  setupLocation
+      parms:     (event, srch.GeoLocationFlow.GeoLocation.event._onelocation)
+      from:      active
+      to:        active
+callservices:
+    - name:      googleautocomplete
+      service:   AllFlows.GoogleMapServices.autocomplete
+      parms:     (event.input, event._googleLocations)
+      runAfter:  getAutoComplete
+      foreach:   FlowAdmin|AutoCompleteLocation
+      from:      active
+      to:        active
+    - name:      googleaddplace
+      service:   AllFlows.GoogleMapServices.addPlace
+      parms:     (event.reference, event.name, event._addPlace)
+      runAfter:  setupAddPlace
+      foreach:   FlowAdmin|CreateLocation
+      from:      active
+      to:        active
+    - name:      googlenearbysearch
+      service:   AllFlows.GoogleMapServices.nearbysearch
+      parms:     (event.latitude, event.longitude, event.radius, event._places)
+      runAfter:  setupPlaces
+      foreach:   FlowAdmin|SearchNear
+      from:      active
+      to:        active
+

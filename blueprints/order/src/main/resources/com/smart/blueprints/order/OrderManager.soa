@@ -1,0 +1,36 @@
+#################################################################
+# This is part of the SMART petstore blueprint.
+#
+# This file describes the transition java class
+# CartManager. Any transitions present in the
+# flow, needs to have this description file. This 
+# indicates to SMART what methods have to be called for
+# what events and data. 
+#
+# In this case, we have two transitions for the AddToCart, RemoveFromCart
+# and GetCartItems events. The below indicates that the addToCart can be
+# called for the Cart data when it is in both the empty and added status. 
+# From any of these states, the Cart will transition to the added status.
+#
+# The removeFromCart is against the CartItem when it is in active state, which
+# means that it is a valid cart item. It transitions to an inactive which is the
+# end state and hence is not in the cart anymore.
+#
+# The getCartItems is called to retrieve the cart items for a cart and can be
+# called only if the Cart is in the added status. If it is empty there are no 
+# items to be retrived and hence cannot be called.
+#
+###############################################################
+name:       OrderManager
+type:       Transition
+flow:       OrderManager
+foreach:        Order|GetOrder
+actions:
+    - name:     getOrderDetails
+      method:   getOrderDetails
+      foreach:  Order|GetOrder
+      from:     active
+      to:       active
+services:
+    - name:     createOrder
+      method:   createOrder

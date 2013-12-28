@@ -54,6 +54,7 @@ public class Cart implements java.io.Serializable
     //Creating a member as transient will not save the data.
     
     private int totalItems;
+    private double totalPrice;
 
     private transient String notificationString;
 
@@ -61,14 +62,18 @@ public class Cart implements java.io.Serializable
     public Cart()
     {
         totalItems = 0;
+        totalPrice = 0;
     }
 
     public String getCartName() { return cartName; }
     public int getTotalItems() { return totalItems; }
+    public double getTotalPrice() { return totalPrice; }
 
     public void addItem(CartItem item)
     {
         totalItems++;
+        totalPrice += item.getPrice();
+        System.out.println("The cart price now is: " + totalPrice);
     }
 
     public void setupNotification(String str) { notificationString = str; }

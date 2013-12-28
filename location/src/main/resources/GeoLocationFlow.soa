@@ -1,0 +1,26 @@
+name:   GeoLocationFlow
+defaultEnable: all
+primeData:
+    - org.smart.standard.location.GeoLocation
+events:
+    - org.smart.standard.location.AutoCompleteLocation
+    - org.smart.standard.location.CreateLocation
+    - org.smart.standard.location.SearchNear
+transitions:
+    - org.smart.standard.location.GeoLocationManager
+responses:
+    - org.smart.standard.location.Locations
+    - org.smart.standard.location.LocationStatus
+    - org.smart.standard.location.SearchedLocations
+features:
+    - name: all
+      artefacts:
+        - org.smart.standard.location.GeoLocation
+        - org.smart.standard.location.GeoLocationManager
+        - org.smart.standard.location.AutoCompleteLocation
+        - org.smart.standard.location.CreateLocation
+        - org.smart.standard.location.SearchNear
+        - org.smart.standard.location.Locations
+        - org.smart.standard.location.LocationStatus
+        - org.smart.standard.location.SearchedLocations
+

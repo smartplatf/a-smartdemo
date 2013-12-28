@@ -1,0 +1,19 @@
+name:   OrderItem
+type:   PrimeData
+flow:   OrderFlow
+attributes:
+    - attribute:    orderItemId
+      type:         key
+states:
+    - name:         active
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   execute
+      parm:     ListAllEvent,SearchEvent,LookupEvent,CheckOut,GetOrder
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

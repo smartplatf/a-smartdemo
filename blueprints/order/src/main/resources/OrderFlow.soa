@@ -1,0 +1,27 @@
+name:   OrderFlow
+defaultEnable: all
+primeData:
+    - com.smart.blueprints.order.Order
+    - com.smart.blueprints.order.OrderItem
+events:
+    - com.smart.blueprints.order.GetOrder
+responses:
+    - com.smart.blueprints.order.OrderStatus
+    - com.smart.blueprints.order.OrderDetails
+transitions:
+    - com.smart.blueprints.order.OrderManager
+features:
+    - name: all
+      artefacts:
+        - com.smart.blueprints.order.Order
+        - com.smart.blueprints.order.OrderItem
+        - com.smart.blueprints.order.OrderStatus
+        - com.smart.blueprints.order.OrderManager
+        - com.smart.blueprints.order.GetOrder
+        - com.smart.blueprints.order.OrderDetails
+links:
+    - from: OrderItem.orderId
+      to: Order.orderId
+needlinks:
+    - name: orderitemlink
+      from: OrderItem.orderItem

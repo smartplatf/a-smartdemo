@@ -24,10 +24,11 @@
 name:       CartManager
 type:       Transition
 flow:       PetstoreCartFlow
-foreach:        Cart|AddToCart,CartItem|RemoveFromCart,Cart|GetCartItems
+foreach:        Cart|AddToCart,CartItem|RemoveFromCart,Cart|GetCartItems,Cart|CheckOut
 actions:
     - name:     addToCart
       method:   addToCart
+      parms:    (event,data,needslink.costparm)
       foreach:  Cart|AddToCart
       from:     empty,added
       to:       added
@@ -41,3 +42,17 @@ actions:
       foreach:  Cart|GetCartItems
       from:     added
       to:       added
+    - name:     checkoutItems
+      method:   checkoutItems
+      foreach:  Cart|CheckOut
+      from:     added
+      to:       inactive
+callservices:
+    - name:     checkoutaction
+      service:   needsService
+      runAfter: checkoutItems
+      parms:    (data.cartName,event.cartItems,data.totalPrice)
+      foreach:  Cart|CheckOut
+      from:     added
+      to:       inactive
+

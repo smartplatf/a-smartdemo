@@ -25,12 +25,16 @@ datafile=animaldata.txt
 declare -a deployfile=(
 $installpath'/com/smart/blueprints/petstore/petstore/1.0-SNAPSHOT/petstore-1.0-SNAPSHOT.jar'
 $installpath'/com/smart/blueprints/cart/cart/1.0-SNAPSHOT/cart-1.0-SNAPSHOT.jar'
+$installpath'/com/smart/blueprints/order/order/1.0-SNAPSHOT/order-1.0-SNAPSHOT.jar'
+$installpath'/com/smart/blueprints/payment/payment/1.0-SNAPSHOT/payment-1.0-SNAPSHOT.jar'
 $installpath'/org/smart/demo/review/review/1.0-SNAPSHOT/review-1.0-SNAPSHOT.jar'
 )
 
 declare -a deploysoa=(
 'PetAnimalFlow.soa'
 'PetstoreCartFlow.soa'
+'OrderFlow.soa'
+'PaymentFlow.soa'
 'ReviewDetailFlow.soa'
 )
 
@@ -96,6 +100,7 @@ echo ""
 echo "[Authenticating as smartadmin...]"
 json=`postjson $smartowner $secflow $authevt "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'identity':'"$smartadm"', 'password':'"$smartadmpwd"', 'type':'custom'}"`
 sessid=`jsonval "$json" $sessrch`
+adminsessid=$sessid
 [ ! -z "$sessid" ] || die "Cannot authenticate with server"
 
 echo "[Authenticated Got sessionid: "$sessid"]"
@@ -135,11 +140,17 @@ echo ""
 ############################
 petenant=${demotenants[0]}
 
-echo  '[Enabling Cart Flow for '$pptenant' ...]'
-json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'PetstoreCartFlow','links':[{'name':'itemlink', 'flow':'PetAnimalFlow', 'object':'PetAnimal','attribute':'id'}]}" $sessid`
+echo  '[Enabling Cart Flow for '$petenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'PetstoreCartFlow','links':[{'name':'itemlink', 'flow':'PetAnimalFlow', 'object':'PetAnimal','attribute':'id'},{'name':'costparm','flow':'srch.PetAnimalFlow','object':'PetAnimal.event.cartItem','attribute':'price'},{'name':'checkoutaction','flow':'OrderFlow','object':'OrderManager','attribute':'createOrder'}]}" $sessid`
 message=`jsonval "$json" $depsrch`
 [ ! -z "$message" ] || die "Cannot deploy file CartFlow for $petenant error "$json
 echo '[Enabled Flow CartFlow ...]'
+
+echo  '[Enabling Order Flow for '$petenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'OrderFlow','links':[{'name':'orderitemlink', 'flow':'PetAnimalFlow', 'object':'PetAnimal','attribute':'id'}]}" $sessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file OrderFlow for $petenant error "$json
+echo '[Enabled Flow OrderFlow ...]'
 
 echo "[Authenticating as $petenant ...]"
 json=`postjson $petenant $secflow $authevt "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'identity':'"$petenant"admin', 'password':'"$petenant"admin', 'type':'custom'}"`
@@ -159,4 +170,45 @@ do
     [ ! -z "$message" ] || die "Cannot create animal error "$json
 done < "$datafile"
 
+
+############################
+# Setting up data for petshoppee
+############################
+petenant=${demotenants[1]}
+
+echo  '[Enabling Cart Flow for '$petenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'PetstoreCartFlow','links':[{'name':'itemlink', 'flow':'PetAnimalFlow', 'object':'PetAnimal','attribute':'id'},{'name':'costparm','flow':'srch.PetAnimalFlow','object':'PetAnimal.event.cartItem','attribute':'price'},{'name':'checkoutaction','flow':'OrderFlow','object':'OrderManager','attribute':'createOrder'}]}" $adminsessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file CartFlow for $petenant error "$json
+echo '[Enabled Flow CartFlow ...]'
+
+echo  '[Enabling Order Flow for '$petenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'OrderFlow','links':[{'name':'orderitemlink', 'flow':'PetAnimalFlow', 'object':'PetAnimal','attribute':'id'}]}" $adminsessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file OrderFlow for $petenant error "$json
+echo '[Enabled Flow OrderFlow ...]'
+
+echo  '[Enabling Payment Flow for '$petenant' ...]'
+json=`postjson $smartowner $adminflow $enableevt "{'TenantAdmin':{'___smart_action___':'lookup','___smart_value___':'"$smartowner"'}, 'tenant':'"$petenant"','enableFeatures':[ 'all' ],'enableFlow':'PaymentFlow','links':[{'name':'paymentlink', 'flow':'OrderFlow', 'object':'Order','attribute':'orderId'},{'name':'Paymentneedslink','flow':'OrderFlow','object':'Order','attribute':'orderId'},{'name':'orderId', 'flow':'data', 'object':'','attribute':'orderId'},{'name':'costprice', 'flow':'data', 'object':'','attribute':'totalPrice'}]}" $adminsessid`
+message=`jsonval "$json" $depsrch`
+[ ! -z "$message" ] || die "Cannot deploy file PaymentFlow for $petenant error "$json
+echo '[Enabled Flow PaymentFlow ...]'
+
+echo "[Authenticating as $petenant ...]"
+json=`postjson $petenant $secflow $authevt "{'FlowAdmin':{'___smart_action___':'lookup', '___smart_value___':'"$secflow"'},'identity':'"$petenant"admin', 'password':'"$petenant"admin', 'type':'custom'}"`
+sessid=`jsonval "$json" $sessrch`
+[ ! -z "$sessid" ] || die "Cannot authenticate with server"
+echo "[Authenticated Got sessionid: "$sessid"]"
+echo ""
+
+while IFS='|' read id cate product name cost desc avail file
+do
+    echo "Uploading data $id:$cate:$product:$name:$cost:$desc:$avail:$file"
+    json=`fileupload $petenant $petstore $uploadevt "$file" $sessid`
+    uploadfile=`jsonval "$json" "Value-0"`
+    [ ! -z "$uploadfile" ] || die "Cannot upload file $file $uploadfile"
+    json=`postjson $petenant $petstore $createprime "{'FlowAdmin':{'___smart_action___':'lookup','___smart_value___':'$petstore'},'create':'PetAnimal','data':{'id':'$id','category':'$cate','type':'$product','name':'$name','price':$cost,'description':'$desc','availability':'$avail','imageURL':'$uploadfile'}}" $sessid`
+    message=`jsonval "json" $depsrch`
+    [ ! -z "$message" ] || die "Cannot create animal error "$json
+done < "$datafile"
 

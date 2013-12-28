@@ -1,0 +1,19 @@
+name:   Payment
+type:   PrimeData
+flow:   PaymentFlow
+attributes:
+    - attribute:    paymentId
+      type:         key
+states:
+    - name:         paid
+      startState:   true
+    - name:         inactive
+      endState:     true
+security:
+    - name:     msgaccess
+      type:     unauthenticated
+      access:   execute
+      parm:     ListAllEvent,PayEvent
+    - name:     roleaccess
+      type:     smartrole
+      access:   execute

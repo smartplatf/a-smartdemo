@@ -1,0 +1,23 @@
+tests:
+    - event: AutoCompleteLocation
+      postto:
+        type:   FlowAdmin
+        value:  GeoLocationFlow
+      postdata:
+        input: nagar
+    - event: CreateLocation
+      postto:
+        type:   FlowAdmin
+        value:  GeoLocationFlow
+      postdata:
+        name: testnagarbhavi
+        reference: "CkRAAAAAOmou7SMNKRsMcScDNOcIHcYUNaXEEl09_2QUfsBMbDmMytNO7EFx-_glmgbUVeqaYX1dJfnPyeaEuFRF58ko0hIQgIoiDbmRQvSiYze2qWGeiBoUikK5wDfa-TmUiGQhp01xu2SM3LI"
+    - event: SearchNear
+      postto:
+        type:   FlowAdmin
+        value:  GeoLocationFlow
+      postdata:
+        latitude: 12.968068
+        longitude: 77.583435
+        radius: 100
+    
